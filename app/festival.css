@@ -268,11 +268,13 @@
   overflow-wrap: anywhere;
 }
 .festival-title .event-wordmark {
+  color: #f2d600;
   font-family: var(--font-jakarta), Arial, sans-serif;
   font-weight: 850;
   letter-spacing: -0.075em;
 }
 .festival-title .event-wordmark-x {
+  color: #ff3b1f;
   display: inline-block;
   font-size: 1.18em;
   transform: rotate(-5deg);

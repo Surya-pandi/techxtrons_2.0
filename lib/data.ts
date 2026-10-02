@@ -9,6 +9,7 @@ import {
   sampleGallery,
 } from "./defaults";
 import type { About, Contact, Event, GalleryImage, Settings } from "./types";
+import { branding, resolveEventName } from "./branding";
 export const getEvents = cache(async (): Promise<Event[]> => {
   if (!isConfigured()) return sampleEvents;
   const db = await createClient();
@@ -41,10 +42,20 @@ async function singleton<T>(table: string, fallback: T): Promise<T> {
   if (error) throw new Error("Site information could not be loaded.");
   return (data as T) ?? fallback;
 }
-export const getSettings = cache(() =>
-  singleton<Settings>("settings", defaultSettings),
-);
-export const getAbout = cache(() => singleton<About>("about", defaultAbout));
+export const getSettings = cache(async () => {
+  const settings = await singleton<Settings>("settings", defaultSettings);
+  return { ...settings, event_name: resolveEventName(settings.event_name) };
+});
+export const getAbout = cache(async () => {
+  const about = await singleton<About>("about", defaultAbout);
+  return {
+    ...about,
+    description: about.description.replace(
+      /\bTECHXTRONS\s+2\.0\b/gi,
+      branding.eventName,
+    ),
+  };
+});
 export const getContact = cache(() =>
   singleton<Contact>("contact", defaultContact),
 );

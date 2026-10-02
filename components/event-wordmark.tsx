@@ -1,4 +1,4 @@
-import { branding } from "@/lib/branding";
+import { branding, resolveEventName } from "@/lib/branding";
 import Image from "next/image";
 
 export default function EventWordmark({
@@ -22,11 +22,12 @@ export default function EventWordmark({
       </span>
     );
   }
-  if (name !== branding.eventName) return <>{name}</>;
+  if (resolveEventName(name) !== branding.eventName)
+    return <span className="event-wordmark">{name}</span>;
   return (
     <span className="event-wordmark">
       TECH<span className="event-wordmark-x">X</span>TRONS
-      <span className="event-wordmark-edition">3.0</span>
+      <span className="event-wordmark-edition">{branding.edition}</span>
     </span>
   );
 }
