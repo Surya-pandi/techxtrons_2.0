@@ -1,6 +1,6 @@
-# TECHXTRONS 2.0 — Department of Information Technology
+# TECHXTRONS 3.0 — Department of Information Technology
 
-A dark event site for TECHXTRONS 2.0 with a centered typographic hero, floating IT topic cards, a desktop navigation dock, and separate pages. The layout takes inspiration from hackathon2026.in while retaining the yellow and orange TECHXTRONS identity. Built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, Lucide, and Supabase. Dates, venue, college details, and actual events remain to be supplied.
+A dark event site for TECHXTRONS 3.0 with a centered typographic hero, floating IT topic cards, a desktop navigation dock, and separate pages. The layout takes inspiration from hackathon2026.in while retaining the yellow and orange TECHXTRONS identity. Built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, Lucide, and Supabase. Dates, venue, college details, and actual events remain to be supplied.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ Open http://localhost:3000. Without Supabase, public pages show **sample** event
 
 ## Connect Supabase when ready
 
-1. Create a Supabase project. Run the SQL files in `supabase/migrations/` in numerical order, once each, in its SQL editor. They create tables, RLS policies, image buckets, a contact-submission function, and the TECHXTRONS 2.0 / IT department branding. If you already ran `001_initial.sql`, apply only the subsequent migrations.
+1. Create a Supabase project. Run the SQL files in `supabase/migrations/` in numerical order, once each, in its SQL editor. They create tables, RLS policies, image buckets, a contact-submission function, and the TECHXTRONS 3.0 / IT department branding. If you already ran `001_initial.sql`, apply only the subsequent migrations.
 2. Copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SITE_URL`. Use the public anon/publishable key; the application does not need a service-role key.
 3. Create your administrator in Supabase **Authentication → Users**. Set a secure password and confirm the account. Turn off public sign-ups if you do not need them.
 4. Grant that user admin access with this SQL, substituting its exact Auth user UUID and email:
@@ -33,8 +33,7 @@ Open http://localhost:3000. Without Supabase, public pages show **sample** event
 - Upload your department logo and real event images through the admin panel. The original logo PNG must be supplied as a file to use it in the hero; the current hero is a typographic wordmark. The local Plus Jakarta Sans font is licensed under OFL (see `app/fonts/OFL.txt`).
 - Upload event posters, gallery photographs, the association image, and logo through the admin panel after connecting Supabase. Supported: JPG, PNG, WebP up to 10 MB per file.
 - Gallery supports multiple selection, drag/drop, previews, captions, progress, retry, category/event association, featured images, editing, and deletion of both the record and stored image.
-- Your supplied intro clips are installed at `/public/videos/desktop-intro.mp4` (landscape, 4.8 seconds) and `/public/videos/mobile-intro.mp4` (portrait, 4.46 seconds), copied from `video/into_desktop.mp4` and `video/into_mobile.mp4`. The intro chooses one viewport-specific source, plays muted, skips missing/erroring videos, provides a Skip button, and honors reduced motion. It plays once per tab session and times out after 45 seconds.
-- `scripts/create-placeholders.ps1` regenerates the original PNG placeholders on Windows. Do not run it after replacing the images unless you intend to restore placeholders.
+- Your supplied intro clips are installed at `/public/videos/desktop-intro.mp4` (landscape, 4.8 seconds) and `/public/videos/mobile-intro.mp4` (portrait, 4.46 seconds). The intro chooses one viewport-specific source, plays muted, skips missing/erroring videos, provides a Skip button, and honors reduced motion. It starts on entry to any public page and on refresh, skips repeats during internal page navigation, and times out after 45 seconds. A Play intro button is shown if autoplay is blocked.
 
 ## Security and operations
 
@@ -77,3 +76,9 @@ Home contains the introduction, countdown, and links to the separate pages. Abou
 Admin: `/admin/login`, `/admin/dashboard`, `/admin/events`, `/admin/gallery`, `/admin/about`, `/admin/contact`, `/admin/settings`.
 
 SEO: route metadata, event titles/descriptions, original typographic Open Graph image, X card, `/sitemap.xml`, and `/robots.txt` excluding admin/API routes. Update branding metadata in `app/layout.tsx` and `app/opengraph-image.tsx` when the actual association identity is available.
+
+## Database setup pending
+
+If Supabase returns PGRST205 (required tables missing), run `supabase/setup.sql` once in the project's SQL editor. This bundles migrations 001 through 004 in a transaction; do not run the same migrations again afterward. For a database with existing tables, apply only the migrations not yet applied.
+
+`SITE_PREVIEW_MODE=true` explicitly enables labelled sample content while setup is pending. Credentials are preserved, and admin sign-in, uploads, and contact submissions stay unavailable in this mode. After successful SQL setup, set `SITE_PREVIEW_MODE=false` in `.env.local`, then refresh the site (restart Next.js if the environment change is not picked up). Add an admin membership as described above. Live-mode database failures remain errors and are never silently replaced with samples.

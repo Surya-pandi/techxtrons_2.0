@@ -1,11 +1,9 @@
 import "server-only";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { isSupabaseEnabled } from "../site-mode";
 export function isConfigured() {
-  return Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  );
+  return isSupabaseEnabled();
 }
 export async function createClient() {
   if (!isConfigured())

@@ -21,7 +21,7 @@ export default function AdminSidebar() {
           IT<span className="yellow">.</span>
         </span>
         <small>
-          TECHXTRONS 2.0
+          TECHXTRONS 3.0
           <br />
           CONTROL ROOM
         </small>

@@ -26,7 +26,7 @@ export default function EventWordmark({
   return (
     <span className="event-wordmark">
       TECH<span className="event-wordmark-x">X</span>TRONS
-      <span className="event-wordmark-edition">2.0</span>
+      <span className="event-wordmark-edition">3.0</span>
     </span>
   );
 }

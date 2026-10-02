@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { branding } from "@/lib/branding";
-export const alt = "TECHXTRONS 2.0 — Department of Information Technology.";
+export const alt = "TECHXTRONS 3.0 — Department of Information Technology.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export default function SocialImage() {
@@ -41,7 +41,7 @@ export default function SocialImage() {
         <div style={{ display: "flex" }}>
           TECH<span style={{ color: "#ff4b16" }}>X</span>TRONS
         </div>
-        <span style={{ color: "#f2d600", fontSize: 72 }}>2.0</span>
+        <span style={{ color: "#f2d600", fontSize: 72 }}>3.0</span>
       </div>
       <div
         style={{

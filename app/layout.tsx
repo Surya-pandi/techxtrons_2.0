@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s | ${branding.eventName}`,
   },
   description:
-    "TECHXTRONS 2.0 — a celebration of ideas, ingenuity, and talent from the Department of Information Technology.",
+    "TECHXTRONS 3.0 — a celebration of ideas, ingenuity, and talent from the Department of Information Technology.",
   openGraph: {
     type: "website",
     siteName: branding.eventName,

@@ -13,7 +13,6 @@ import { getSettings } from "@/lib/data";
 import { formatDate } from "@/lib/utils";
 import { ButtonLink, Eyebrow } from "@/components/ui";
 import Countdown from "@/components/countdown";
-import IntroVideo from "@/components/intro-video";
 import EventWordmark from "@/components/event-wordmark";
 export default async function Home() {
   const settings = await getSettings();
@@ -49,7 +48,6 @@ export default async function Home() {
   ];
   return (
     <>
-      <IntroVideo enabled={settings.intro_enabled} />
       <section className="festival-hero">
         <div className="festival-grid" aria-hidden="true" />
         <div className="festival-topline">

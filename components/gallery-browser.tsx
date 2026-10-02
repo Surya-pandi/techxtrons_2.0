@@ -128,7 +128,7 @@ export default function GalleryBrowser({
       ) : (
         <EmptyState
           title="The memories start here."
-          text="Photos from TECHXTRONS 2.0 will appear here as the organizing team shares them. Try another collection or check back for the first moments."
+          text="Photos from TECHXTRONS 3.0 will appear here as the organizing team shares them. Try another collection or check back for the first moments."
         />
       )}
       {photo && (

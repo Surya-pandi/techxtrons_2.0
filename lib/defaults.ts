@@ -15,7 +15,7 @@ export const defaultAbout: About = {
   id: singletonId,
   title: "Great minds. Greater possibilities.",
   description:
-    "TECHXTRONS 2.0 brings together the Department of Information Technology for a celebration of ideas, creativity, and shared ambition. A space for curious minds to meet and turn ideas into something extraordinary.",
+    "TECHXTRONS 3.0 brings together the Department of Information Technology for a celebration of ideas, creativity, and shared ambition. A space for curious minds to meet and turn ideas into something extraordinary.",
   vision:
     "To build a community where curiosity becomes confidence, and students feel empowered to shape what comes next in technology.",
   mission:

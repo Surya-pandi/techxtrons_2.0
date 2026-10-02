@@ -1050,10 +1050,16 @@ input[type="file"] {
   height: 100%;
   object-fit: contain;
 }
-.intro-overlay .button {
+.intro-controls {
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  display: flex;
+  gap: 12px;
+}
+.intro-controls .button-outline {
+  background: #111;
+  color: #fff;
 }
 .standalone-state {
   padding: 20vh 8vw;

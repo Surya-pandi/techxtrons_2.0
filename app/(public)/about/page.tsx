@@ -39,7 +39,7 @@ export default async function AboutPage() {
                 <span>Grow together.</span>
               </strong>
               <span className="about-art-foot">
-                INFORMATION TECHNOLOGY / 2.0
+                INFORMATION TECHNOLOGY / 3.0
               </span>
             </>
           )}

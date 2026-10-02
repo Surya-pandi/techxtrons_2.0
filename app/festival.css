@@ -1,3 +1,11 @@
+.preview-notice {
+  padding: 12px 24px;
+  text-align: center;
+  background: #29260d;
+  color: #eee29b;
+  border-bottom: 1px solid #484019;
+  font-size: 11px !important;
+}
 .public-site {
   padding-left: 88px;
   font-family: var(--font-jakarta), Arial, sans-serif;

@@ -12,7 +12,7 @@ export default function LoginForm({ configured }: { configured: boolean }) {
       <div className="login-icon">
         <LockKeyhole />
       </div>
-      <span className="section-number">TECHXTRONS 2.0 ADMIN</span>
+      <span className="section-number">TECHXTRONS 3.0 ADMIN</span>
       <h1>Welcome back.</h1>
       <p>Sign in to shape the experience.</p>
       {!configured && (
