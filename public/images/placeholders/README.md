@@ -1,0 +1,1 @@
+These generic images are fallbacks for department photographs and event posters. Upload real images through the admin panel when Supabase is connected. The gallery starts empty until photos are added. The logo at /images/logo.png is a placeholder.
