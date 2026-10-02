@@ -1,5 +1,5 @@
 -- INITIAL SETUP ONLY: run once in the Supabase SQL editor on a project without these tables.
--- Bundles migrations 001-004. Do not run this and the same migrations separately.
+-- Bundles migrations 001-005. Do not run this and the same migrations separately.
 -- After success set SITE_PREVIEW_MODE=false in .env.local.
 
 begin;
@@ -110,6 +110,14 @@ update public.about
 set description = replace(description, 'TECHXTRONS 2.0', 'TECHXTRONS 3.0')
 where description like '%TECHXTRONS 2.0%';
 
+
+-- 005_event_date.sql
+-- Event date confirmed as 10 October 2026; midnight IST until a time is specified.
+alter table public.settings alter column event_starts_at
+set default '2026-10-10T00:00:00+05:30'::timestamptz;
+update public.settings
+set event_starts_at = '2026-10-10T00:00:00+05:30'::timestamptz
+where id = '00000000-0000-0000-0000-000000000001';
 
 NOTIFY pgrst, 'reload schema';
 commit;

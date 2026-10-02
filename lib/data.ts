@@ -44,7 +44,12 @@ async function singleton<T>(table: string, fallback: T): Promise<T> {
 }
 export const getSettings = cache(async () => {
   const settings = await singleton<Settings>("settings", defaultSettings);
-  return { ...settings, event_name: resolveEventName(settings.event_name) };
+  return {
+    ...settings,
+    event_name: resolveEventName(settings.event_name),
+    event_starts_at:
+      settings.event_starts_at ?? defaultSettings.event_starts_at,
+  };
 });
 export const getAbout = cache(async () => {
   const about = await singleton<About>("about", defaultAbout);

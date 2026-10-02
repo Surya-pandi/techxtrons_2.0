@@ -1,6 +1,6 @@
 # TECHXTRONS 3.0 — Department of Information Technology
 
-A dark event site for TECHXTRONS 3.0 with a centered typographic hero, floating IT topic cards, a desktop navigation dock, and separate pages. The layout takes inspiration from hackathon2026.in while retaining the yellow and orange TECHXTRONS identity. Built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, Lucide, and Supabase. Dates, venue, college details, and actual events remain to be supplied.
+A dark event site for TECHXTRONS 3.0 with a centered typographic hero, floating IT topic cards, a desktop navigation dock, and separate pages. The layout takes inspiration from hackathon2026.in while retaining the yellow and orange TECHXTRONS identity. Built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, Lucide, and Supabase. The countdown targets 10 October 2026 at midnight IST. Venue, college details, and actual events remain to be supplied.
 
 ## Run locally
 
@@ -25,7 +25,7 @@ Open http://localhost:3000. Without Supabase, public pages show **sample** event
    values ('AUTH-USER-UUID', 'your-admin-email@example.com');
    ```
 
-5. Restart the app. Visit `/admin/login`. In Settings, enter the event name, association name, year, venue, and a start date with timezone (for example `2026-12-15T09:00:00+05:30`). Until a date is supplied, the countdown displays dashes.
+5. Restart the app. Visit `/admin/login`. In Settings, enter the event name, association name, year, venue, and a start date with timezone (for example `2026-12-15T09:00:00+05:30`). The default countdown targets `2026-10-10T00:00:00+05:30` (midnight IST); update the time when confirmed.
 6. Add your actual events, About and Contact content, and gallery images. Recent contact submissions appear on the admin dashboard; no outgoing email service is configured.
 
 ## Images and intro videos
@@ -79,6 +79,6 @@ SEO: route metadata, event titles/descriptions, original typographic Open Graph 
 
 ## Database setup pending
 
-If Supabase returns PGRST205 (required tables missing), run `supabase/setup.sql` once in the project's SQL editor. This bundles migrations 001 through 004 in a transaction; do not run the same migrations again afterward. For a database with existing tables, apply only the migrations not yet applied.
+If Supabase returns PGRST205 (required tables missing), run `supabase/setup.sql` once in the project's SQL editor. This bundles migrations 001 through 005 in a transaction; do not run the same migrations again afterward. For a database with existing tables, apply only the migrations not yet applied.
 
 `SITE_PREVIEW_MODE=true` explicitly enables labelled sample content while setup is pending. Credentials are preserved, and admin sign-in, uploads, and contact submissions stay unavailable in this mode. After successful SQL setup, set `SITE_PREVIEW_MODE=false` in `.env.local`, then refresh the site (restart Next.js if the environment change is not picked up). Add an admin membership as described above. Live-mode database failures remain errors and are never silently replaced with samples.

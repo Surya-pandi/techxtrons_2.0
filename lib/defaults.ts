@@ -6,7 +6,7 @@ export const defaultSettings: Settings = {
   event_name: branding.eventName,
   association_name: branding.departmentName,
   year: "2026",
-  event_starts_at: null,
+  event_starts_at: "2026-10-10T00:00:00+05:30",
   venue: "Venue to be announced",
   logo_url: "/images/logo.png",
   intro_enabled: true,
