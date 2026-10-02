@@ -31,23 +31,15 @@ export default function Footer({
             <a href="/contact">
               Get in touch <ArrowUpRight size={14} />
             </a>
-            {[
-              ["Instagram", contact.instagram_url],
-              ["LinkedIn", contact.linkedin_url],
-              ["YouTube", contact.youtube_url],
-            ].map(
-              ([label, url]) =>
-                safeUrl(url) && (
-                  <a
-                    key={label}
-                    href={safeUrl(url)}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {label}
-                    <ArrowUpRight size={14} />
-                  </a>
-                ),
+            {safeUrl(contact.instagram_url) && (
+              <a
+                href={safeUrl(contact.instagram_url)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+                <ArrowUpRight size={14} />
+              </a>
             )}
           </div>
         </div>

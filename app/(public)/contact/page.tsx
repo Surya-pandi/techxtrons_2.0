@@ -1,12 +1,4 @@
-import {
-  Mail,
-  MapPin,
-  Phone,
-  ArrowUpRight,
-  Instagram,
-  Linkedin,
-  Youtube,
-} from "lucide-react";
+import { Mail, MapPin, Phone, ArrowUpRight, Instagram } from "lucide-react";
 import { getContact } from "@/lib/data";
 import { safeUrl } from "@/lib/utils";
 import { PageHeading } from "@/components/ui";
@@ -70,28 +62,23 @@ export default async function ContactPage() {
             </div>
           </div>
           <div className="social-links">
-            {[
-              [Instagram, c.instagram_url, "Instagram"],
-              [Linkedin, c.linkedin_url, "LinkedIn"],
-              [Youtube, c.youtube_url, "YouTube"],
-            ].map(([Icon, url, label]) => {
-              const Component = Icon as typeof Instagram;
-              return safeUrl(url as string) ? (
-                <a
-                  key={label as string}
-                  aria-label={label as string}
-                  href={safeUrl(url as string)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Component size={20} />
-                </a>
-              ) : (
-                <span key={label as string} title={`${label} link to be added`}>
-                  <Component size={20} />
-                </span>
-              );
-            })}
+            {safeUrl(c.instagram_url) ? (
+              <a
+                aria-label="Instagram"
+                href={safeUrl(c.instagram_url)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Instagram size={20} />
+              </a>
+            ) : (
+              <span
+                title="Instagram link to be added"
+                aria-label="Instagram link to be added"
+              >
+                <Instagram size={20} />
+              </span>
+            )}
           </div>
         </div>
         <ContactForm />
