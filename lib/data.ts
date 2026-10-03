@@ -9,7 +9,9 @@ import {
   sampleGallery,
 } from "./defaults";
 import type { About, Contact, Event, GalleryImage, Settings } from "./types";
-import { branding, resolveEventName } from "./branding";
+import { branding } from "./branding";
+import { resolveSettings } from "./settings";
+import { resolveWebsiteContent } from "./website-content";
 export const getEvents = cache(async (): Promise<Event[]> => {
   if (!isConfigured()) return sampleEvents;
   const db = await createClient();
@@ -44,12 +46,7 @@ async function singleton<T>(table: string, fallback: T): Promise<T> {
 }
 export const getSettings = cache(async () => {
   const settings = await singleton<Settings>("settings", defaultSettings);
-  return {
-    ...settings,
-    event_name: resolveEventName(settings.event_name),
-    event_starts_at:
-      settings.event_starts_at ?? defaultSettings.event_starts_at,
-  };
+  return resolveSettings(settings);
 });
 export const getAbout = cache(async () => {
   const about = await singleton<About>("about", defaultAbout);
@@ -64,3 +61,7 @@ export const getAbout = cache(async () => {
 export const getContact = cache(() =>
   singleton<Contact>("contact", defaultContact),
 );
+export const getWebsiteContent = cache(async () => {
+  const settings = await getSettings();
+  return resolveWebsiteContent(settings.website_content);
+});

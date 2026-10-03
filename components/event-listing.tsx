@@ -3,27 +3,7 @@ import type { Category } from "@/lib/types";
 import EventBrowser from "./event-browser";
 import EventTracks from "./event-tracks";
 import { PageHeading } from "./ui";
-
-const headings = {
-  all: {
-    eyebrow: "FIND YOUR ARENA",
-    title: "Made for your moment",
-    description:
-      "Chase an idea. Take on a challenge. Discover something new about yourself.",
-  },
-  technical: {
-    eyebrow: "FOR THE CURIOUS MINDS",
-    title: "Technical events",
-    description:
-      "Code, create, and put your ideas to the test. Explore challenges built for curious minds.",
-  },
-  non_technical: {
-    eyebrow: "FOR THE FREE SPIRITS",
-    title: "Non-technical events",
-    description:
-      "Bring your creativity, teamwork, and competitive spirit. Find your next experience beyond the technical.",
-  },
-};
+import { SiteSection, SiteText } from "./site-content";
 
 export default async function EventListing({
   category = "all",
@@ -39,15 +19,25 @@ export default async function EventListing({
       : events.filter((event) => event.category === category);
   return (
     <>
-      <PageHeading {...headings[category]} />
-      {category === "all" && <EventTracks />}
-      <section className="container section-bottom">
-        <EventBrowser
-          key={category}
-          events={visible}
-          initialCategory={category}
+      <SiteSection name="event-listings.heading.visible">
+        <PageHeading
+          eyebrow={<SiteText name={`listing.${category}.eyebrow`} />}
+          title={<SiteText name={`listing.${category}.title`} />}
+          description={<SiteText name={`listing.${category}.description`} />}
         />
-      </section>
+      </SiteSection>
+      <SiteSection name="event-listings.categories.visible">
+        {category === "all" && <EventTracks />}
+      </SiteSection>
+      <SiteSection name="event-listings.list.visible">
+        <section className="container section-bottom">
+          <EventBrowser
+            key={category}
+            events={visible}
+            initialCategory={category}
+          />
+        </section>
+      </SiteSection>
     </>
   );
 }

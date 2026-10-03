@@ -1,0 +1,1388 @@
+[
+  {
+    "key": "home.curious-minds-big-possibilities",
+    "group": "Home",
+    "label": "CURIOUS MINDS. BIG POSSIBILITIES.",
+    "type": "text",
+    "value": "CURIOUS MINDS. BIG POSSIBILITIES."
+  },
+  {
+    "key": "home.it",
+    "group": "Home",
+    "label": "IT /",
+    "type": "text",
+    "value": "IT / "
+  },
+  {
+    "key": "home.the",
+    "group": "Home",
+    "label": "THE",
+    "type": "text",
+    "value": " THE "
+  },
+  {
+    "key": "home.edition",
+    "group": "Home",
+    "label": "EDITION",
+    "type": "text",
+    "value": " EDITION "
+  },
+  {
+    "key": "home.presents",
+    "group": "Home",
+    "label": "presents",
+    "type": "text",
+    "value": " presents"
+  },
+  {
+    "key": "home.big-ideas",
+    "group": "Home",
+    "label": "Big ideas.",
+    "type": "text",
+    "value": "Big ideas."
+  },
+  {
+    "key": "home.bigger-possibilities",
+    "group": "Home",
+    "label": "Bigger possibilities.",
+    "type": "text",
+    "value": "Bigger possibilities."
+  },
+  {
+    "key": "home.explore-the-events",
+    "group": "Home",
+    "label": "EXPLORE THE EVENTS",
+    "type": "text",
+    "value": "EXPLORE THE EVENTS"
+  },
+  {
+    "key": "home.think-create-connect",
+    "group": "Home",
+    "label": "< THINK / CREATE / CONNECT >",
+    "type": "text",
+    "value": "< THINK / CREATE / CONNECT >"
+  },
+  {
+    "key": "home.code-with-curiosity",
+    "group": "Home",
+    "label": "CODE WITH CURIOSITY",
+    "type": "text",
+    "value": "CODE WITH CURIOSITY"
+  },
+  {
+    "key": "home.create-with-purpose",
+    "group": "Home",
+    "label": "CREATE WITH PURPOSE",
+    "type": "text",
+    "value": "CREATE WITH PURPOSE"
+  },
+  {
+    "key": "home.compete-with-spirit",
+    "group": "Home",
+    "label": "COMPETE WITH SPIRIT",
+    "type": "text",
+    "value": "COMPETE WITH SPIRIT"
+  },
+  {
+    "key": "home.connect-with-people",
+    "group": "Home",
+    "label": "CONNECT WITH PEOPLE",
+    "type": "text",
+    "value": "CONNECT WITH PEOPLE"
+  },
+  {
+    "key": "home.save-the-moment",
+    "group": "Home",
+    "label": "SAVE THE MOMENT",
+    "type": "text",
+    "value": "SAVE THE MOMENT"
+  },
+  {
+    "key": "home.something-worth",
+    "group": "Home",
+    "label": "Something worth",
+    "type": "text",
+    "value": "Something worth"
+  },
+  {
+    "key": "home.looking-forward-to",
+    "group": "Home",
+    "label": "looking forward to.",
+    "type": "text",
+    "value": "looking forward to."
+  },
+  {
+    "key": "about.the-people-behind-the-ideas",
+    "group": "About",
+    "label": "THE PEOPLE BEHIND THE IDEAS",
+    "type": "text",
+    "value": "THE PEOPLE BEHIND THE IDEAS"
+  },
+  {
+    "key": "about.united-by-curiosity",
+    "group": "About",
+    "label": "United by curiosity",
+    "type": "text",
+    "value": "United by curiosity"
+  },
+  {
+    "key": "about.the-techxtrons-mindset",
+    "group": "About",
+    "label": "THE TECHXTRONS MINDSET",
+    "type": "text",
+    "value": "THE TECHXTRONS MINDSET"
+  },
+  {
+    "key": "about.stay-curious",
+    "group": "About",
+    "label": "Stay curious.",
+    "type": "text",
+    "value": "Stay curious."
+  },
+  {
+    "key": "about.make-things",
+    "group": "About",
+    "label": "Make things.",
+    "type": "text",
+    "value": "Make things."
+  },
+  {
+    "key": "about.grow-together",
+    "group": "About",
+    "label": "Grow together.",
+    "type": "text",
+    "value": "Grow together."
+  },
+  {
+    "key": "about.information-technology-3-0",
+    "group": "About",
+    "label": "INFORMATION TECHNOLOGY / 3.0",
+    "type": "text",
+    "value": "INFORMATION TECHNOLOGY / 3.0"
+  },
+  {
+    "key": "about.our-story",
+    "group": "About",
+    "label": "OUR STORY",
+    "type": "text",
+    "value": "OUR STORY"
+  },
+  {
+    "key": "about.discover-our-events",
+    "group": "About",
+    "label": "Discover our events",
+    "type": "text",
+    "value": "Discover our events"
+  },
+  {
+    "key": "about.find-your-people",
+    "group": "About",
+    "label": "FIND YOUR PEOPLE",
+    "type": "text",
+    "value": "FIND YOUR PEOPLE"
+  },
+  {
+    "key": "about.one-department",
+    "group": "About",
+    "label": "One department.",
+    "type": "text",
+    "value": "One department."
+  },
+  {
+    "key": "about.so-many-possibilities",
+    "group": "About",
+    "label": "So many possibilities.",
+    "type": "text",
+    "value": "So many possibilities."
+  },
+  {
+    "key": "about.let-s-connect",
+    "group": "About",
+    "label": "Let's connect",
+    "type": "text",
+    "value": "Let's connect"
+  },
+  {
+    "key": "contact.we-re-just-a-message-away",
+    "group": "Contact",
+    "label": "WE’RE JUST A MESSAGE AWAY",
+    "type": "text",
+    "value": "WE’RE JUST A MESSAGE AWAY"
+  },
+  {
+    "key": "contact.let-s-connect",
+    "group": "Contact",
+    "label": "Let’s connect",
+    "type": "text",
+    "value": "Let’s connect"
+  },
+  {
+    "key": "contact.questions-ideas-or-a-little-more-information-we-d-love-",
+    "group": "Contact",
+    "label": "Questions, ideas, or a little more information. We’d love to hear from you.",
+    "type": "text",
+    "value": "Questions, ideas, or a little more information. We’d love to hear from you."
+  },
+  {
+    "key": "contact.email-us",
+    "group": "Contact",
+    "label": "EMAIL US",
+    "type": "text",
+    "value": "EMAIL US"
+  },
+  {
+    "key": "contact.email-to-be-announced",
+    "group": "Contact",
+    "label": "Email to be announced",
+    "type": "text",
+    "value": "Email to be announced"
+  },
+  {
+    "key": "contact.give-us-a-call",
+    "group": "Contact",
+    "label": "GIVE US A CALL",
+    "type": "text",
+    "value": "GIVE US A CALL"
+  },
+  {
+    "key": "contact.phone-number-to-be-announced",
+    "group": "Contact",
+    "label": "Phone number to be announced",
+    "type": "text",
+    "value": "Phone number to be announced"
+  },
+  {
+    "key": "contact.find-us-here",
+    "group": "Contact",
+    "label": "FIND US HERE",
+    "type": "text",
+    "value": "FIND US HERE"
+  },
+  {
+    "key": "contact.open-in-maps",
+    "group": "Contact",
+    "label": "Open in Maps",
+    "type": "text",
+    "value": "Open in Maps"
+  },
+  {
+    "key": "contact.directions-will-be-shared-once-the-venue-is-confirmed",
+    "group": "Contact",
+    "label": "Directions will be shared once the venue is confirmed.",
+    "type": "text",
+    "value": "Directions will be shared once the venue is confirmed."
+  },
+  {
+    "key": "gallery.relive-the-energy",
+    "group": "Gallery",
+    "label": "RELIVE THE ENERGY",
+    "type": "text",
+    "value": "RELIVE THE ENERGY"
+  },
+  {
+    "key": "gallery.moments-that-matter",
+    "group": "Gallery",
+    "label": "Moments that matter",
+    "type": "text",
+    "value": "Moments that matter"
+  },
+  {
+    "key": "gallery.big-ideas-shared-victories-and-everything-in-between-ou",
+    "group": "Gallery",
+    "label": "Big ideas, shared victories, and everything in between. Our story, in frames.",
+    "type": "text",
+    "value": "Big ideas, shared victories, and everything in between. Our story, in frames."
+  },
+  {
+    "key": "event-details.back-to-events",
+    "group": "Event details",
+    "label": "Back to events",
+    "type": "text",
+    "value": "Back to events"
+  },
+  {
+    "key": "event-details.your-next-challenge",
+    "group": "Event details",
+    "label": "YOUR NEXT CHALLENGE",
+    "type": "text",
+    "value": "YOUR NEXT CHALLENGE"
+  },
+  {
+    "key": "event-details.be-part-of-it",
+    "group": "Event details",
+    "label": "Be part of it.",
+    "type": "text",
+    "value": "Be part of it."
+  },
+  {
+    "key": "event-details.date",
+    "group": "Event details",
+    "label": "DATE",
+    "type": "text",
+    "value": "DATE"
+  },
+  {
+    "key": "event-details.time-ist",
+    "group": "Event details",
+    "label": "TIME · IST",
+    "type": "text",
+    "value": "TIME · IST"
+  },
+  {
+    "key": "event-details.venue",
+    "group": "Event details",
+    "label": "VENUE",
+    "type": "text",
+    "value": "VENUE"
+  },
+  {
+    "key": "event-details.prizes",
+    "group": "Event details",
+    "label": "PRIZES",
+    "type": "text",
+    "value": "PRIZES"
+  },
+  {
+    "key": "event-details.register-now",
+    "group": "Event details",
+    "label": "Register now",
+    "type": "text",
+    "value": "Register now"
+  },
+  {
+    "key": "event-details.registration-opening-soon",
+    "group": "Event details",
+    "label": "Registration opening soon",
+    "type": "text",
+    "value": "Registration opening soon"
+  },
+  {
+    "key": "event-details.for-questions",
+    "group": "Event details",
+    "label": "For questions,",
+    "type": "text",
+    "value": "For questions,"
+  },
+  {
+    "key": "event-details.contact-the-organizing-team",
+    "group": "Event details",
+    "label": "contact the organizing team.",
+    "type": "text",
+    "value": "contact the organizing team."
+  },
+  {
+    "key": "event-details.up-next",
+    "group": "Event details",
+    "label": "UP NEXT",
+    "type": "text",
+    "value": "UP NEXT"
+  },
+  {
+    "key": "event-details.keep-exploring",
+    "group": "Event details",
+    "label": "Keep exploring.",
+    "type": "text",
+    "value": "Keep exploring."
+  },
+  {
+    "key": "footer.curious-minds-belong-here",
+    "group": "Footer",
+    "label": "CURIOUS MINDS BELONG HERE.",
+    "type": "text",
+    "value": "CURIOUS MINDS BELONG HERE."
+  },
+  {
+    "key": "footer.your-next",
+    "group": "Footer",
+    "label": "Your next",
+    "type": "text",
+    "value": "Your next"
+  },
+  {
+    "key": "footer.big-idea",
+    "group": "Footer",
+    "label": "big idea",
+    "type": "text",
+    "value": "big idea"
+  },
+  {
+    "key": "footer.explore",
+    "group": "Footer",
+    "label": "EXPLORE",
+    "type": "text",
+    "value": "EXPLORE"
+  },
+  {
+    "key": "footer.the-association",
+    "group": "Footer",
+    "label": "The association",
+    "type": "text",
+    "value": "The association"
+  },
+  {
+    "key": "footer.our-events",
+    "group": "Footer",
+    "label": "Our events",
+    "type": "text",
+    "value": "Our events"
+  },
+  {
+    "key": "footer.the-gallery",
+    "group": "Footer",
+    "label": "The gallery",
+    "type": "text",
+    "value": "The gallery"
+  },
+  {
+    "key": "footer.let-s-connect",
+    "group": "Footer",
+    "label": "LET’S CONNECT",
+    "type": "text",
+    "value": "LET’S CONNECT"
+  },
+  {
+    "key": "footer.get-in-touch",
+    "group": "Footer",
+    "label": "Get in touch",
+    "type": "text",
+    "value": "Get in touch "
+  },
+  {
+    "key": "footer.techxtrons",
+    "group": "Footer",
+    "label": "TECHXTRONS /",
+    "type": "text",
+    "value": "TECHXTRONS / "
+  },
+  {
+    "key": "footer.created-to-inspire",
+    "group": "Footer",
+    "label": "CREATED TO INSPIRE.",
+    "type": "text",
+    "value": "CREATED TO INSPIRE."
+  },
+  {
+    "key": "event-categories.choose-your-experience",
+    "group": "Event categories",
+    "label": "CHOOSE YOUR EXPERIENCE",
+    "type": "text",
+    "value": "CHOOSE YOUR EXPERIENCE"
+  },
+  {
+    "key": "event-categories.different-interests",
+    "group": "Event categories",
+    "label": "Different interests.",
+    "type": "text",
+    "value": "Different interests."
+  },
+  {
+    "key": "event-categories.the-same-energy",
+    "group": "Event categories",
+    "label": "The same energy.",
+    "type": "text",
+    "value": "The same energy."
+  },
+  {
+    "key": "event-categories.from-technical-challenges-to-creative-adventures-there-",
+    "group": "Event categories",
+    "label": "From technical challenges to creative adventures, there is more than one way to make your mark.",
+    "type": "text",
+    "value": "From technical challenges to creative adventures, there is more than one way to make your mark."
+  },
+  {
+    "key": "event-categories.01-technical",
+    "group": "Event categories",
+    "label": "01 / TECHNICAL",
+    "type": "text",
+    "value": "01 / TECHNICAL"
+  },
+  {
+    "key": "event-categories.think-it",
+    "group": "Event categories",
+    "label": "Think it.",
+    "type": "text",
+    "value": "Think it."
+  },
+  {
+    "key": "event-categories.build-it",
+    "group": "Event categories",
+    "label": "Build it.",
+    "type": "text",
+    "value": "Build it."
+  },
+  {
+    "key": "event-categories.coding-paper-presentations-and-projects-explore-ideas-t",
+    "group": "Event categories",
+    "label": "Coding, paper presentations, and projects. Explore ideas that move technology forward.",
+    "type": "text",
+    "value": "Coding, paper presentations, and projects. Explore ideas that move technology forward."
+  },
+  {
+    "key": "event-categories.explore-technical-events",
+    "group": "Event categories",
+    "label": "Explore technical events",
+    "type": "text",
+    "value": "Explore technical events"
+  },
+  {
+    "key": "event-categories.02-non-technical",
+    "group": "Event categories",
+    "label": "02 / NON-TECHNICAL",
+    "type": "text",
+    "value": "02 / NON-TECHNICAL"
+  },
+  {
+    "key": "event-categories.find-your",
+    "group": "Event categories",
+    "label": "Find your",
+    "type": "text",
+    "value": "Find your"
+  },
+  {
+    "key": "event-categories.wild-card",
+    "group": "Event categories",
+    "label": "wild card.",
+    "type": "text",
+    "value": "wild card."
+  },
+  {
+    "key": "event-categories.treasure-hunts-photography-and-gaming-follow-your-curio",
+    "group": "Event categories",
+    "label": "Treasure hunts, photography, and gaming. Follow your curiosity beyond the code.",
+    "type": "text",
+    "value": "Treasure hunts, photography, and gaming. Follow your curiosity beyond the code."
+  },
+  {
+    "key": "event-categories.explore-non-technical-events",
+    "group": "Event categories",
+    "label": "Explore non-technical events",
+    "type": "text",
+    "value": "Explore non-technical events"
+  },
+  {
+    "key": "contact-form.drop-us-a-line",
+    "group": "Contact form",
+    "label": "DROP US A LINE",
+    "type": "text",
+    "value": "DROP US A LINE"
+  },
+  {
+    "key": "contact-form.start-a-conversation",
+    "group": "Contact form",
+    "label": "Start a conversation.",
+    "type": "text",
+    "value": "Start a conversation."
+  },
+  {
+    "key": "contact-form.thank-you-for-reaching-out",
+    "group": "Contact form",
+    "label": "Thank you for reaching out.",
+    "type": "text",
+    "value": "Thank you for reaching out."
+  },
+  {
+    "key": "contact-form.your-name",
+    "group": "Contact form",
+    "label": "Your name",
+    "type": "text",
+    "value": "Your name"
+  },
+  {
+    "key": "contact-form.email-address",
+    "group": "Contact form",
+    "label": "Email address",
+    "type": "text",
+    "value": "Email address"
+  },
+  {
+    "key": "contact-form.subject",
+    "group": "Contact form",
+    "label": "Subject",
+    "type": "text",
+    "value": "Subject"
+  },
+  {
+    "key": "contact-form.message",
+    "group": "Contact form",
+    "label": "Message",
+    "type": "text",
+    "value": "Message"
+  },
+  {
+    "key": "contact-form.leave-this-blank",
+    "group": "Contact form",
+    "label": "Leave this blank",
+    "type": "text",
+    "value": "Leave this blank"
+  },
+  {
+    "key": "contact-form.your-details-are-only-used-to-respond-to-your-enquiry",
+    "group": "Contact form",
+    "label": "Your details are only used to respond to your enquiry.",
+    "type": "text",
+    "value": "Your details are only used to respond to your enquiry."
+  },
+  {
+    "key": "gallery.all-events",
+    "group": "Gallery",
+    "label": "All events",
+    "type": "text",
+    "value": "All events"
+  },
+  {
+    "key": "gallery.featured",
+    "group": "Gallery",
+    "label": "FEATURED",
+    "type": "text",
+    "value": "FEATURED"
+  },
+  {
+    "key": "gallery.the-memories-start-here",
+    "group": "Gallery",
+    "label": "The memories start here.",
+    "type": "text",
+    "value": "The memories start here."
+  },
+  {
+    "key": "gallery.photos-from-techxtrons-3-0-will-appear-here-as-the-orga",
+    "group": "Gallery",
+    "label": "Photos from TECHXTRONS 3.0 will appear here as the organizing team shares them. Try another collection or check back for the first moments.",
+    "type": "text",
+    "value": "Photos from TECHXTRONS 3.0 will appear here as the organizing team shares them. Try another collection or check back for the first moments."
+  },
+  {
+    "key": "event-listings.experiences-to-explore",
+    "group": "Event listings",
+    "label": "experiences to explore",
+    "type": "text",
+    "value": " experiences to explore"
+  },
+  {
+    "key": "event-listings.no-events-found",
+    "group": "Event listings",
+    "label": "No events found.",
+    "type": "text",
+    "value": "No events found."
+  },
+  {
+    "key": "event-listings.try-another-search-or-event-category",
+    "group": "Event listings",
+    "label": "Try another search or event category.",
+    "type": "text",
+    "value": "Try another search or event category."
+  },
+  {
+    "key": "home.hero.visible",
+    "group": "Home",
+    "label": "Show hero",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "home.topics.visible",
+    "group": "Home",
+    "label": "Show topics",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "home.actions.visible",
+    "group": "Home",
+    "label": "Show actions",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "home.details.visible",
+    "group": "Home",
+    "label": "Show details",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "home.ribbon.visible",
+    "group": "Home",
+    "label": "Show ribbon",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "home.countdown.visible",
+    "group": "Home",
+    "label": "Show countdown",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "about.heading.visible",
+    "group": "About",
+    "label": "Show heading",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "about.story.visible",
+    "group": "About",
+    "label": "Show story",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "about.image.visible",
+    "group": "About",
+    "label": "Show image",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "about.values.visible",
+    "group": "About",
+    "label": "Show values",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "about.closing.visible",
+    "group": "About",
+    "label": "Show closing",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.heading.visible",
+    "group": "Contact",
+    "label": "Show heading",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.details.visible",
+    "group": "Contact",
+    "label": "Show details",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.email.visible",
+    "group": "Contact",
+    "label": "Show email",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.phone.visible",
+    "group": "Contact",
+    "label": "Show phone",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.address.visible",
+    "group": "Contact",
+    "label": "Show address",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.socials.visible",
+    "group": "Contact",
+    "label": "Show socials",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "contact.form.visible",
+    "group": "Contact",
+    "label": "Show form",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "gallery.heading.visible",
+    "group": "Gallery",
+    "label": "Show heading",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "gallery.collection.visible",
+    "group": "Gallery",
+    "label": "Show collection",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-listings.heading.visible",
+    "group": "Event listings",
+    "label": "Show heading",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-listings.categories.visible",
+    "group": "Event listings",
+    "label": "Show categories",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-listings.list.visible",
+    "group": "Event listings",
+    "label": "Show list",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-details.poster.visible",
+    "group": "Event details",
+    "label": "Show poster",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-details.rules.visible",
+    "group": "Event details",
+    "label": "Show rules",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-details.coordinators.visible",
+    "group": "Event details",
+    "label": "Show coordinators",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-details.prizes.visible",
+    "group": "Event details",
+    "label": "Show prizes",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-details.registration.visible",
+    "group": "Event details",
+    "label": "Show registration",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "event-details.related.visible",
+    "group": "Event details",
+    "label": "Show related",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "footer.visible",
+    "group": "Footer",
+    "label": "Show footer",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "navigation.brand.visible",
+    "group": "Navigation",
+    "label": "Show brand",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "navigation.tagline.visible",
+    "group": "Navigation",
+    "label": "Show tagline",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "navigation.cta.visible",
+    "group": "Navigation",
+    "label": "Show cta",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "navigation.dock.visible",
+    "group": "Navigation",
+    "label": "Show dock",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.home.visible",
+    "group": "Navigation",
+    "label": "Home navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.home.label",
+    "group": "Navigation",
+    "label": "Home navigation label",
+    "type": "text",
+    "value": "Home"
+  },
+  {
+    "key": "nav.home.href",
+    "group": "Navigation",
+    "label": "Home navigation destination",
+    "type": "url",
+    "value": "/"
+  },
+  {
+    "key": "nav.about.visible",
+    "group": "Navigation",
+    "label": "About navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.about.label",
+    "group": "Navigation",
+    "label": "About navigation label",
+    "type": "text",
+    "value": "About"
+  },
+  {
+    "key": "nav.about.href",
+    "group": "Navigation",
+    "label": "About navigation destination",
+    "type": "url",
+    "value": "/about"
+  },
+  {
+    "key": "nav.events.visible",
+    "group": "Navigation",
+    "label": "All events navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.events.label",
+    "group": "Navigation",
+    "label": "All events navigation label",
+    "type": "text",
+    "value": "All events"
+  },
+  {
+    "key": "nav.events.href",
+    "group": "Navigation",
+    "label": "All events navigation destination",
+    "type": "url",
+    "value": "/events"
+  },
+  {
+    "key": "nav.technical.visible",
+    "group": "Navigation",
+    "label": "Technical events navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.technical.label",
+    "group": "Navigation",
+    "label": "Technical events navigation label",
+    "type": "text",
+    "value": "Technical events"
+  },
+  {
+    "key": "nav.technical.href",
+    "group": "Navigation",
+    "label": "Technical events navigation destination",
+    "type": "url",
+    "value": "/technical-events"
+  },
+  {
+    "key": "nav.nontechnical.visible",
+    "group": "Navigation",
+    "label": "Non-technical events navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.nontechnical.label",
+    "group": "Navigation",
+    "label": "Non-technical events navigation label",
+    "type": "text",
+    "value": "Non-technical events"
+  },
+  {
+    "key": "nav.nontechnical.href",
+    "group": "Navigation",
+    "label": "Non-technical events navigation destination",
+    "type": "url",
+    "value": "/non-technical-events"
+  },
+  {
+    "key": "nav.gallery.visible",
+    "group": "Navigation",
+    "label": "Gallery navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.gallery.label",
+    "group": "Navigation",
+    "label": "Gallery navigation label",
+    "type": "text",
+    "value": "Gallery"
+  },
+  {
+    "key": "nav.gallery.href",
+    "group": "Navigation",
+    "label": "Gallery navigation destination",
+    "type": "url",
+    "value": "/gallery"
+  },
+  {
+    "key": "nav.contact.visible",
+    "group": "Navigation",
+    "label": "Contact navigation link",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "nav.contact.label",
+    "group": "Navigation",
+    "label": "Contact navigation label",
+    "type": "text",
+    "value": "Contact"
+  },
+  {
+    "key": "nav.contact.href",
+    "group": "Navigation",
+    "label": "Contact navigation destination",
+    "type": "url",
+    "value": "/contact"
+  },
+  {
+    "key": "nav.subtitle",
+    "group": "Navigation",
+    "label": "Brand subtitle",
+    "type": "text",
+    "value": "DEPARTMENT OF IT"
+  },
+  {
+    "key": "nav.tagline",
+    "group": "Navigation",
+    "label": "Header tagline",
+    "type": "text",
+    "value": "Ideas. Energy. Impact."
+  },
+  {
+    "key": "nav.cta",
+    "group": "Navigation",
+    "label": "Header button",
+    "type": "text",
+    "value": "Explore events"
+  },
+  {
+    "key": "nav.cta.href",
+    "group": "Navigation",
+    "label": "Header button destination",
+    "type": "url",
+    "value": "/events"
+  },
+  {
+    "key": "home.primary",
+    "group": "Home",
+    "label": "Primary button",
+    "type": "text",
+    "value": "Find your event"
+  },
+  {
+    "key": "home.primary.href",
+    "group": "Home",
+    "label": "Primary button destination",
+    "type": "url",
+    "value": "/events"
+  },
+  {
+    "key": "home.secondary",
+    "group": "Home",
+    "label": "Secondary button",
+    "type": "text",
+    "value": "Meet TECHXTRONS"
+  },
+  {
+    "key": "home.secondary.href",
+    "group": "Home",
+    "label": "Secondary button destination",
+    "type": "url",
+    "value": "/about"
+  },
+  {
+    "key": "home.description",
+    "group": "Home",
+    "label": "Hero description",
+    "type": "text",
+    "value": "A place to code, create, compete, and connect. Bring your curiosity to {event_name} and find your next big moment."
+  },
+  {
+    "key": "home.countdown.description",
+    "group": "Home",
+    "label": "Countdown description",
+    "type": "text",
+    "value": "Your next experience is getting closer."
+  },
+  {
+    "key": "home.countdown.unannounced",
+    "group": "Home",
+    "label": "Unannounced date description",
+    "type": "text",
+    "value": "The event date will be announced here. Stay curious."
+  },
+  {
+    "key": "intro.desktop",
+    "group": "Intro video",
+    "label": "Desktop intro video URL",
+    "type": "url",
+    "value": "/videos/desktop-intro.mp4"
+  },
+  {
+    "key": "intro.mobile",
+    "group": "Intro video",
+    "label": "Mobile intro video URL",
+    "type": "url",
+    "value": "/videos/mobile-intro.mp4"
+  },
+  {
+    "key": "topic.code.visible",
+    "group": "Home",
+    "label": "Show CODE card",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "topic.code.label",
+    "group": "Home",
+    "label": "CODE card title",
+    "type": "text",
+    "value": "CODE"
+  },
+  {
+    "key": "topic.code.caption",
+    "group": "Home",
+    "label": "CODE card caption",
+    "type": "text",
+    "value": "Think. Build. Repeat."
+  },
+  {
+    "key": "topic.code.href",
+    "group": "Home",
+    "label": "CODE card destination",
+    "type": "url",
+    "value": "/technical-events"
+  },
+  {
+    "key": "topic.idea.visible",
+    "group": "Home",
+    "label": "Show IDEATE card",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "topic.idea.label",
+    "group": "Home",
+    "label": "IDEATE card title",
+    "type": "text",
+    "value": "IDEATE"
+  },
+  {
+    "key": "topic.idea.caption",
+    "group": "Home",
+    "label": "IDEATE card caption",
+    "type": "text",
+    "value": "Start with a what if."
+  },
+  {
+    "key": "topic.idea.href",
+    "group": "Home",
+    "label": "IDEATE card destination",
+    "type": "url",
+    "value": "/technical-events"
+  },
+  {
+    "key": "topic.create.visible",
+    "group": "Home",
+    "label": "Show CREATE card",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "topic.create.label",
+    "group": "Home",
+    "label": "CREATE card title",
+    "type": "text",
+    "value": "CREATE"
+  },
+  {
+    "key": "topic.create.caption",
+    "group": "Home",
+    "label": "CREATE card caption",
+    "type": "text",
+    "value": "Make it your own."
+  },
+  {
+    "key": "topic.create.href",
+    "group": "Home",
+    "label": "CREATE card destination",
+    "type": "url",
+    "value": "/non-technical-events"
+  },
+  {
+    "key": "topic.play.visible",
+    "group": "Home",
+    "label": "Show PLAY card",
+    "type": "visible",
+    "value": true
+  },
+  {
+    "key": "topic.play.label",
+    "group": "Home",
+    "label": "PLAY card title",
+    "type": "text",
+    "value": "PLAY"
+  },
+  {
+    "key": "topic.play.caption",
+    "group": "Home",
+    "label": "PLAY card caption",
+    "type": "text",
+    "value": "Bring your game."
+  },
+  {
+    "key": "topic.play.href",
+    "group": "Home",
+    "label": "PLAY card destination",
+    "type": "url",
+    "value": "/non-technical-events"
+  },
+  {
+    "key": "listing.all.eyebrow",
+    "group": "Event listings",
+    "label": "all page eyebrow",
+    "type": "text",
+    "value": "FIND YOUR ARENA"
+  },
+  {
+    "key": "listing.all.title",
+    "group": "Event listings",
+    "label": "all page title",
+    "type": "text",
+    "value": "Made for your moment"
+  },
+  {
+    "key": "listing.all.description",
+    "group": "Event listings",
+    "label": "all page description",
+    "type": "text",
+    "value": "Chase an idea. Take on a challenge. Discover something new about yourself."
+  },
+  {
+    "key": "listing.technical.eyebrow",
+    "group": "Event listings",
+    "label": "technical page eyebrow",
+    "type": "text",
+    "value": "FOR THE CURIOUS MINDS"
+  },
+  {
+    "key": "listing.technical.title",
+    "group": "Event listings",
+    "label": "technical page title",
+    "type": "text",
+    "value": "Technical events"
+  },
+  {
+    "key": "listing.technical.description",
+    "group": "Event listings",
+    "label": "technical page description",
+    "type": "text",
+    "value": "Code, create, and put your ideas to the test. Explore challenges built for curious minds."
+  },
+  {
+    "key": "listing.non_technical.eyebrow",
+    "group": "Event listings",
+    "label": "non_technical page eyebrow",
+    "type": "text",
+    "value": "FOR THE FREE SPIRITS"
+  },
+  {
+    "key": "listing.non_technical.title",
+    "group": "Event listings",
+    "label": "non_technical page title",
+    "type": "text",
+    "value": "Non-technical events"
+  },
+  {
+    "key": "listing.non_technical.description",
+    "group": "Event listings",
+    "label": "non_technical page description",
+    "type": "text",
+    "value": "Bring your creativity, teamwork, and competitive spirit. Find your next experience beyond the technical."
+  },
+  {
+    "key": "about.vision.title",
+    "group": "About",
+    "label": "vision heading",
+    "type": "text",
+    "value": "Our vision"
+  },
+  {
+    "key": "about.mission.title",
+    "group": "About",
+    "label": "mission heading",
+    "type": "text",
+    "value": "Our mission"
+  },
+  {
+    "key": "about.objectives.title",
+    "group": "About",
+    "label": "objectives heading",
+    "type": "text",
+    "value": "Our objectives"
+  },
+  {
+    "key": "event-details.rules.title",
+    "group": "Event details",
+    "label": "rules section heading",
+    "type": "text",
+    "value": "The challenge"
+  },
+  {
+    "key": "event-details.coordinators.title",
+    "group": "Event details",
+    "label": "coordinators section heading",
+    "type": "text",
+    "value": "Your coordinators"
+  },
+  {
+    "key": "event-details.prizes.title",
+    "group": "Event details",
+    "label": "prizes section heading",
+    "type": "text",
+    "value": "What?s at stake"
+  },
+  {
+    "key": "seo.description",
+    "group": "Search and sharing",
+    "label": "Website description ({event_name} and {association_name} follow Settings)",
+    "type": "text",
+    "value": "{event_name} ? a celebration of ideas, ingenuity, and talent from the {association_name}."
+  },
+  {
+    "key": "seo.tagline",
+    "group": "Search and sharing",
+    "label": "Social preview tagline",
+    "type": "text",
+    "value": "Rise beyond. Be extraordinary."
+  },
+  {
+    "key": "home.ribbon.animate",
+    "group": "Home",
+    "label": "Animate slogan strip",
+    "type": "visible",
+    "value": true
+  }
+]

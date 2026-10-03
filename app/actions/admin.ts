@@ -5,6 +5,7 @@ import { z } from "zod";
 import { createClient, isConfigured } from "@/lib/supabase/server";
 import { authorizeMutation } from "@/lib/auth";
 import { singletonId } from "@/lib/defaults";
+import { websiteContentSchema } from "@/lib/website-content";
 import {
   eventSchema,
   gallerySchema,
@@ -95,7 +96,11 @@ export async function saveRecord(
           throw new Error("Use an uploaded image from this Supabase project.");
       }
     }
-    if (id && !z.uuid().safeParse(id).success)
+    const singleton = ["about", "contact", "settings"].includes(table);
+    if (
+      id &&
+      (singleton ? id !== singletonId : !z.uuid().safeParse(id).success)
+    )
       throw new Error("Invalid record.");
     if (table === "gallery") {
       const gallery = gallerySchema.parse(values);
@@ -106,19 +111,18 @@ export async function saveRecord(
       if (asset.publicUrl !== gallery.image_url)
         throw new Error("Invalid gallery image.");
     }
-    const singleton = ["about", "contact", "settings"].includes(table);
     const payload: Record<string, string | boolean | null> = { ...parsed.data };
     const query = singleton
       ? supabase.from(table).upsert({ ...payload, id: singletonId })
       : id
         ? supabase.from(table).update(payload).eq("id", id)
         : supabase.from(table).insert(payload);
-    const { error } = await query;
-    if (error)
+    const { error, data } = await query.select("id").single();
+    if (error || !data)
       return {
         success: false,
         message:
-          error.code === "23505"
+          error?.code === "23505"
             ? "That event slug already exists. Choose a different one."
             : "The changes could not be saved. Please try again.",
       };
@@ -133,13 +137,13 @@ export async function saveRecord(
   }
 }
 export async function deleteRecord(
-  table: "events" | "gallery",
+  table: "events" | "gallery" | "messages",
   id: string,
 ): Promise<ActionState> {
   try {
     const { supabase } = await authorizeMutation();
     if (
-      !["events", "gallery"].includes(table) ||
+      !["events", "gallery", "messages"].includes(table) ||
       !z.uuid().safeParse(id).success
     )
       throw new Error("Invalid record.");
@@ -160,8 +164,12 @@ export async function deleteRecord(
           );
       }
     }
-    const { error } = await supabase.from(table).delete().eq("id", id);
-    if (error)
+    const { error, data } = await supabase
+      .from(table)
+      .delete()
+      .eq("id", id)
+      .select("id");
+    if (error || !data?.length)
       throw new Error("The record could not be removed. Please try again.");
     revalidatePath("/", "layout");
     return { success: true, message: "Deleted successfully." };
@@ -169,6 +177,42 @@ export async function deleteRecord(
     return {
       success: false,
       message: error instanceof Error ? error.message : "Unable to delete.",
+    };
+  }
+}
+
+export async function saveWebsiteContent(
+  values: unknown,
+): Promise<ActionState> {
+  try {
+    const { supabase } = await authorizeMutation();
+    const parsed = websiteContentSchema.safeParse(values);
+    if (!parsed.success)
+      return {
+        success: false,
+        message: parsed.error.issues
+          .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
+          .join(" · "),
+      };
+    const { error, data } = await supabase
+      .from("settings")
+      .update({ website_content: parsed.data })
+      .eq("id", singletonId)
+      .select("id")
+      .single();
+    if (error || !data)
+      return {
+        success: false,
+        message:
+          "Website content could not be saved. Ensure migration 006 has been applied, then try again.",
+      };
+    revalidatePath("/", "layout");
+    return { success: true, message: "Website content published." };
+  } catch {
+    return {
+      success: false,
+      message:
+        "Unable to save website content. Check your administrator session and try again.",
     };
   }
 }

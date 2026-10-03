@@ -14,7 +14,14 @@
   --surface: #111214;
   --surface-raised: #1a1c1f;
   --orange: #ff4b16;
+  --site-cursor:
+    url("/cursor%26pointer/Batman%20Logo%20%26%20Batman%20Silhouette%20Cursor--cursor--SweezyCursors.cur?v=small-32"),
+    auto;
+  --site-pointer:
+    url("/cursor%26pointer/Batman%20%26%20Batarang%20Cursor--pointer--SweezyCursors.cur?v=small-32"),
+    pointer;
 }
+/* Native .cur files include the correct click hotspots for each size. */
 * {
   box-sizing: border-box;
 }
@@ -2154,4 +2161,36 @@ progress {
 }
 input[type="checkbox"] {
   accent-color: var(--yellow);
+}
+@media (any-hover: hover) and (any-pointer: fine) {
+  html,
+  body {
+    cursor: var(--site-cursor);
+  }
+  a[href],
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  select:not(:disabled),
+  label[for],
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  input[type="file"]:not(:disabled),
+  .upload-dropzone,
+  .file-input-wrap {
+    cursor: var(--site-pointer);
+  }
+  textarea:not(:disabled),
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not(
+      [type="button"]
+    ):not([type="submit"]):not(:disabled),
+  [contenteditable="true"] {
+    cursor: text;
+  }
+  [aria-disabled="true"],
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    cursor: not-allowed;
+  }
 }

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./festival.css";
-import { branding } from "@/lib/branding";
+import { getSettings, getWebsiteContent } from "@/lib/data";
 const jakarta = localFont({
   src: "./fonts/PlusJakartaSans.ttf",
   variable: "--font-jakarta",
@@ -13,31 +13,39 @@ export const viewport: Viewport = {
   themeColor: "#080808",
   colorScheme: "dark",
 };
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  ),
-  title: {
-    default: `${branding.eventName} | ${branding.departmentName}`,
-    template: `%s | ${branding.eventName}`,
-  },
-  description:
-    "TECHXTRONS 3.0 — a celebration of ideas, ingenuity, and talent from the Department of Information Technology.",
-  openGraph: {
-    type: "website",
-    siteName: branding.eventName,
-    title: `${branding.eventName} | ${branding.tagline}`,
-    description: `Discover ${branding.eventName} from the ${branding.departmentName}.`,
-    locale: "en_IN",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${branding.eventName} | ${branding.departmentName}`,
-    description: "Ideas. Energy. Impact.",
-    images: ["/opengraph-image"],
-  },
-  icons: { icon: "/images/logo.png" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const [settings, content] = await Promise.all([
+    getSettings(),
+    getWebsiteContent(),
+  ]);
+  const description = String(content["seo.description"])
+    .replaceAll("{event_name}", settings.event_name)
+    .replaceAll("{association_name}", settings.association_name);
+  return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    ),
+    title: {
+      default: `${settings.event_name} | ${settings.association_name}`,
+      template: `%s | ${settings.event_name}`,
+    },
+    description,
+    openGraph: {
+      type: "website",
+      siteName: settings.event_name,
+      title: settings.event_name,
+      description,
+      locale: "en_IN",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${settings.event_name} | ${settings.association_name}`,
+      description,
+      images: ["/opengraph-image"],
+    },
+    icons: { icon: settings.logo_url || "/images/logo.png" },
+  };
+}
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

@@ -15,21 +15,34 @@ import {
   Gamepad2,
 } from "lucide-react";
 import type { Settings } from "@/lib/types";
+import { SiteText, SiteSection, useSiteContent } from "./site-content";
 // Use native links so each menu selection loads its independent page document.
-const links = [
-  { href: "/", label: "Home", icon: House },
-  { href: "/about", label: "About", icon: Users },
-  { href: "/events", label: "All events", icon: CalendarDays },
-  { href: "/technical-events", label: "Technical events", icon: Code2 },
+const navigationItems = [
+  { id: "home", icon: House },
+  { id: "about", icon: Users },
+  { id: "events", icon: CalendarDays },
+  { id: "technical", icon: Code2 },
   {
-    href: "/non-technical-events",
-    label: "Non-technical events",
+    id: "nontechnical",
     icon: Gamepad2,
   },
-  { href: "/gallery", label: "Gallery", icon: Images },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { id: "gallery", icon: Images },
+  { id: "contact", icon: Mail },
 ];
 export default function Navigation({ settings }: { settings: Settings }) {
+  const content = useSiteContent();
+  const links = navigationItems
+    .filter(
+      ({ id }) =>
+        content[`nav.${id}.visible`] !== false &&
+        content[`nav.${id}.label`] &&
+        content[`nav.${id}.href`],
+    )
+    .map((item) => ({
+      ...item,
+      label: String(content[`nav.${item.id}.label`]),
+      href: String(content[`nav.${item.id}.href`]),
+    }));
   const [open, setOpen] = useState(false);
   const path = usePathname();
   const isActive = (href: string) =>
@@ -49,31 +62,46 @@ export default function Navigation({ settings }: { settings: Settings }) {
           Skip to content
         </a>
         <div className="festival-masthead">
-          <a
-            href="/"
-            className="festival-brand"
-            aria-label={settings.event_name + " home"}
-          >
-            {settings.logo_url && settings.logo_url !== "/images/logo.png" ? (
-              <Image src={settings.logo_url} alt="" width={38} height={38} />
-            ) : (
-              <span className="festival-brand-icon" aria-hidden="true">
-                X
+          <SiteSection name="navigation.brand.visible">
+            <a
+              href="/"
+              className="festival-brand"
+              aria-label={settings.event_name + " home"}
+            >
+              {settings.logo_url && settings.logo_url !== "/images/logo.png" ? (
+                <Image src={settings.logo_url} alt="" width={38} height={38} />
+              ) : (
+                <span className="festival-brand-icon" aria-hidden="true">
+                  X
+                </span>
+              )}
+              <span>
+                {settings.event_name}
+                <small>
+                  <SiteText name="nav.subtitle" />
+                </small>
               </span>
-            )}
-            <span>
-              {settings.event_name}
-              <small>DEPARTMENT OF IT</small>
+            </a>
+          </SiteSection>
+          <SiteSection name="navigation.tagline.visible">
+            <span className="festival-host">
+              {settings.association_name}
+              <span>
+                <SiteText name="nav.tagline" />
+              </span>
             </span>
-          </a>
-          <span className="festival-host">
-            {settings.association_name}
-            <span>Ideas. Energy. Impact.</span>
-          </span>
-          <a className="festival-header-cta" href="/events">
-            Explore events
-            <ArrowUpRight size={17} />
-          </a>
+          </SiteSection>
+          <SiteSection name="navigation.cta.visible">
+            {content["nav.cta.href"] && content["nav.cta"] && (
+              <a
+                className="festival-header-cta"
+                href={String(content["nav.cta.href"])}
+              >
+                <SiteText name="nav.cta" />
+                <ArrowUpRight size={17} />
+              </a>
+            )}
+          </SiteSection>
           <button
             className="festival-menu-button"
             aria-label={open ? "Close navigation" : "Open navigation"}
@@ -90,9 +118,9 @@ export default function Navigation({ settings }: { settings: Settings }) {
             className="festival-mobile-nav"
             aria-label="Mobile navigation"
           >
-            {links.map(({ href, label, icon: Icon }) => (
+            {links.map(({ id, href, label, icon: Icon }) => (
               <a
-                key={href}
+                key={id}
                 href={href}
                 aria-current={isActive(href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
@@ -105,19 +133,21 @@ export default function Navigation({ settings }: { settings: Settings }) {
           </nav>
         )}
       </header>
-      <nav className="festival-dock" aria-label="Main navigation">
-        {links.map(({ href, label, icon: Icon }) => (
-          <a
-            key={href}
-            href={href}
-            aria-label={label}
-            aria-current={isActive(href) ? "page" : undefined}
-          >
-            <Icon size={21} strokeWidth={1.7} />
-            <span className="dock-label">{label}</span>
-          </a>
-        ))}
-      </nav>
+      <SiteSection name="navigation.dock.visible">
+        <nav className="festival-dock" aria-label="Main navigation">
+          {links.map(({ id, href, label, icon: Icon }) => (
+            <a
+              key={id}
+              href={href}
+              aria-label={label}
+              aria-current={isActive(href) ? "page" : undefined}
+            >
+              <Icon size={21} strokeWidth={1.7} />
+              <span className="dock-label">{label}</span>
+            </a>
+          ))}
+        </nav>
+      </SiteSection>
     </>
   );
 }

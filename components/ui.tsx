@@ -31,11 +31,11 @@ export function SectionHeading({
   href,
   link,
 }: {
-  number: string;
-  title: string;
-  text?: string;
+  number: React.ReactNode;
+  title: React.ReactNode;
+  text?: React.ReactNode;
   href?: string;
-  link?: string;
+  link?: React.ReactNode;
 }) {
   return (
     <div className="section-heading">
@@ -58,9 +58,9 @@ export function PageHeading({
   title,
   description,
 }: {
-  eyebrow: string;
-  title: string;
-  description: string;
+  eyebrow: React.ReactNode;
+  title: React.ReactNode;
+  description: React.ReactNode;
 }) {
   return (
     <section className="page-heading container">
@@ -77,8 +77,8 @@ export function EmptyState({
   title = "Something extraordinary is on its way.",
   text = "Check back soon for updates from the organizing team.",
 }: {
-  title?: string;
-  text?: string;
+  title?: React.ReactNode;
+  text?: React.ReactNode;
 }) {
   return (
     <div className="empty-state">

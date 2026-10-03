@@ -57,7 +57,7 @@ export const gallerySchema = z.object({
   is_featured: z.boolean(),
 });
 export const aboutSchema = z.object({
-  title: text(200).min(1),
+  title: text(200),
   description: text(),
   vision: text(),
   mission: text(),
@@ -65,8 +65,8 @@ export const aboutSchema = z.object({
   image_url: image,
 });
 export const contactSchema = z.object({
-  department_name: text(200).min(1),
-  college_name: text(200).min(1),
+  department_name: text(200),
+  college_name: text(200),
   email: z.union([z.literal(""), z.email()]),
   phone: text(50),
   address: text(1000),

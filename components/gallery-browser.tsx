@@ -1,4 +1,6 @@
 "use client";
+import { SiteText, SiteSection } from "@/components/site-content";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X, ArrowUpRight } from "lucide-react";
@@ -90,7 +92,9 @@ export default function GalleryBrowser({
           value={eventId}
           onChange={(e) => setEventId(e.target.value)}
         >
-          <option value="all">All events</option>
+          <option value="all">
+            <SiteText name="gallery.all-events" />
+          </option>
           {events.map((e) => (
             <option key={e.id} value={e.id}>
               {e.title}
@@ -121,14 +125,20 @@ export default function GalleryBrowser({
                 {photo.caption}
                 <ArrowUpRight size={20} />
               </span>
-              {photo.is_featured && <em>FEATURED</em>}
+              {photo.is_featured && (
+                <em>
+                  <SiteText name="gallery.featured" />
+                </em>
+              )}
             </button>
           ))}
         </div>
       ) : (
         <EmptyState
-          title="The memories start here."
-          text="Photos from TECHXTRONS 3.0 will appear here as the organizing team shares them. Try another collection or check back for the first moments."
+          title={<SiteText name="gallery.the-memories-start-here" />}
+          text={
+            <SiteText name="gallery.photos-from-techxtrons-3-0-will-appear-here-as-the-orga" />
+          }
         />
       )}
       {photo && (

@@ -15,7 +15,7 @@ Open http://localhost:3000. Without Supabase, public pages show **sample** event
 
 ## Connect Supabase when ready
 
-1. Create a Supabase project. Run the SQL files in `supabase/migrations/` in numerical order, once each, in its SQL editor. They create tables, RLS policies, image buckets, a contact-submission function, and the TECHXTRONS 3.0 / IT department branding. If you already ran `001_initial.sql`, apply only the subsequent migrations.
+1. Create a Supabase project. Run `supabase/setup.sql` in its SQL editor. It creates tables, RLS policies, image buckets, a contact-submission function, and the TECHXTRONS 3.0 / IT department branding. It supports fresh and partially initialized databases using this project's schema and can be rerun. It includes migrations 001 through 006; do not apply those separately afterward. For future updates, apply only new migrations.
 2. Copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SITE_URL`. Use the public anon/publishable key; the application does not need a service-role key.
 3. Create your administrator in Supabase **Authentication → Users**. Set a secure password and confirm the account. Turn off public sign-ups if you do not need them.
 4. Grant that user admin access with this SQL, substituting its exact Auth user UUID and email:
@@ -63,7 +63,7 @@ npm test
 npm run build
 ```
 
-With the unconfigured preview running, use `npm run test:smoke` to check public pages, sample event filtering, admin redirects, and rejected unauthorized/cross-origin uploads. Set `TEST_BASE_URL` to test another local server.
+With the unconfigured preview running, use `npm run test:smoke` to check public pages, event detail links, linked assets, sample event filtering, missing pages, admin redirects, and rejected unauthorized/cross-origin uploads. Set `TEST_BASE_URL` to test another local server. Set `TEST_LIVE_DATA=true` when checking a configured database; this discovers published event links and skips assertions that require sample content. The smoke checks do not create or modify database records.
 
 Unit tests exercise security-relevant validation, upload limits, dates, URLs, contact input, and gallery associations. The schema and live authenticated flows require your Supabase project for integration testing. Browser visual and interaction QA also needs to be completed in a browser; the in-app browser was not available during implementation.
 
@@ -73,12 +73,26 @@ Public: `/`, `/about`, `/events`, `/technical-events`, `/non-technical-events`, 
 
 Home contains the introduction, countdown, and links to the separate pages. About, event listings, gallery images, and contact information live on their dedicated pages. Event category navigation opens separate Technical and Non-Technical pages; the earlier `/events?category=...` links remain supported.
 
-Admin: `/admin/login`, `/admin/dashboard`, `/admin/events`, `/admin/gallery`, `/admin/about`, `/admin/contact`, `/admin/settings`.
+Admin: `/admin/login`, `/admin/dashboard`, `/admin/events`, `/admin/gallery`, `/admin/about`, `/admin/contact`, `/admin/settings`, `/admin/website`, `/admin/messages`.
 
 SEO: route metadata, event titles/descriptions, original typographic Open Graph image, X card, `/sitemap.xml`, and `/robots.txt` excluding admin/API routes. Update branding metadata in `app/layout.tsx` and `app/opengraph-image.tsx` when the actual association identity is available.
 
 ## Database setup pending
 
-If Supabase returns PGRST205 (required tables missing), run `supabase/setup.sql` once in the project's SQL editor. This bundles migrations 001 through 005 in a transaction; do not run the same migrations again afterward. For a database with existing tables, apply only the migrations not yet applied.
+If Supabase returns PGRST205 (required tables missing) or `42P07: relation "admins" already exists`, run the current `supabase/setup.sql` in the project's SQL editor. The script handles existing tables, indexes, seed rows, and buckets and refreshes app-owned policies and triggers in a transaction. Existing rows, customized content, configured event dates, and bucket settings are preserved; original branding placeholders are updated. Existing tables must match this project's schema. This includes migrations 001 through 006; do not run those separately afterward. The historical `001_initial.sql` remains a one-time migration and will fail if its tables already exist.
 
 `SITE_PREVIEW_MODE=true` explicitly enables labelled sample content while setup is pending. Credentials are preserved, and admin sign-in, uploads, and contact submissions stay unavailable in this mode. After successful SQL setup, set `SITE_PREVIEW_MODE=false` in `.env.local`, then refresh the site (restart Next.js if the environment change is not picked up). Add an admin membership as described above. Live-mode database failures remain errors and are never silently replaced with samples.
+
+## Website content and visibility
+
+For an existing database, run `supabase/migrations/006_website_content.sql` in the Supabase SQL editor. It adds the website content settings and an administrator-only enquiry deletion policy. New databases can run the complete `supabase/setup.sql`. Existing content is preserved. The Website Content editor stays read-only until the migration has been applied.
+
+- **Website content**: edit public copy, navigation labels and destinations, home buttons and topic cards, desktop/mobile intro video URLs, search/share descriptions, and section visibility. Clear text to remove it, or turn off a section. Restore default and discard-unsaved controls are available. Hiding a section does not delete its underlying records or unpublish its route.
+- **Events**: create, edit and delete event records; change or remove posters and registration links.
+- **Gallery**: upload, replace, edit and delete images. Deletion also removes the associated storage object. Replaced or detached files can remain in storage, as described above.
+- **About / Contact / Settings**: edit and clear optional content, remove images, manage contact/social links, branding, countdown and intro visibility. LinkedIn and YouTube are shown when supplied.
+- **Enquiries**: browse contact submissions with pagination and permanently delete selected enquiries after confirmation.
+
+The yellow home slogan strip scrolls continuously, pauses on hover or with its pause button, and becomes static for reduced-motion users. Website Content can edit its four slogans, hide the strip, or turn off its animation.
+
+`npm run test:admin` starts a disposable copy of the Next application with a local Supabase HTTP fixture and exercises authenticated page rendering and server actions. It does not use live credentials or modify the live database. It verifies application authorization and persistence behavior; actual Supabase RLS and authenticated uploads still need verification against the configured project.

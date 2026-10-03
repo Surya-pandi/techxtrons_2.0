@@ -168,11 +168,18 @@ export default function EventsManager({ events }: { events: Event[] }) {
           onCancel={() => setDeleting(null)}
           onConfirm={() =>
             startTransition(async () => {
-              const result = await deleteRecord("events", deleting.id);
-              setNotice(result.message);
-              setDeleting(null);
-              if (result.success) {
-                router.refresh();
+              try {
+                const result = await deleteRecord("events", deleting.id);
+                setNotice(result.message);
+                setDeleting(null);
+                if (result.success) {
+                  router.refresh();
+                }
+              } catch {
+                setNotice(
+                  "Unable to delete. Check your connection and try again.",
+                );
+                setDeleting(null);
               }
             })
           }

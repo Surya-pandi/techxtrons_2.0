@@ -3,6 +3,7 @@ import { settingsFields } from "@/lib/admin-fields";
 import ContentForm from "@/components/admin/content-form";
 export default async function SettingsAdmin() {
   const data = await getSettings();
+  const { website_content: _content, ...settings } = data;
   return (
     <>
       <div className="admin-page-title">
@@ -16,7 +17,7 @@ export default async function SettingsAdmin() {
         <ContentForm
           table="settings"
           id={data.id}
-          initial={{ ...data, event_starts_at: data.event_starts_at || "" }}
+          initial={{ ...settings, event_starts_at: data.event_starts_at || "" }}
           fields={settingsFields}
         />
       </section>

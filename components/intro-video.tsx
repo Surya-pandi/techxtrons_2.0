@@ -1,8 +1,10 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { INTRO_SESSION_KEY, introSource, shouldPlayIntro } from "@/lib/intro";
+import { useSiteContent } from "./site-content";
 
 export default function IntroVideo({ enabled }: { enabled: boolean }) {
+  const content = useSiteContent();
   const [source, setSource] = useState("");
   const [needsPlay, setNeedsPlay] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -37,8 +39,12 @@ export default function IntroVideo({ enabled }: { enabled: boolean }) {
     )
       return;
     // Start loading the selected clip immediately, without a separate HEAD request.
-    setSource(introSource(window.matchMedia("(max-width: 767px)").matches));
-  }, [enabled]);
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    const configured = content[mobile ? "intro.mobile" : "intro.desktop"];
+    setSource(
+      typeof configured === "string" ? configured : introSource(mobile),
+    );
+  }, [enabled, content]);
 
   useEffect(() => {
     if (!source) return;

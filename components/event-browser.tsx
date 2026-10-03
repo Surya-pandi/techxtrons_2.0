@@ -1,4 +1,6 @@
 "use client";
+import { SiteText, SiteSection } from "@/components/site-content";
+
 import { useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import type { Event } from "@/lib/types";
@@ -49,7 +51,10 @@ export default function EventBrowser({
         </label>
       </div>
       <div className="results-caption">
-        <span>{filtered.length} experiences to explore</span>
+        <span>
+          {filtered.length}
+          <SiteText name="event-listings.experiences-to-explore" />
+        </span>
         <SlidersHorizontal size={15} />
       </div>
       {filtered.length ? (
@@ -60,8 +65,10 @@ export default function EventBrowser({
         </div>
       ) : (
         <EmptyState
-          title="No events found."
-          text="Try another search or event category."
+          title={<SiteText name="event-listings.no-events-found" />}
+          text={
+            <SiteText name="event-listings.try-another-search-or-event-category" />
+          }
         />
       )}
     </>

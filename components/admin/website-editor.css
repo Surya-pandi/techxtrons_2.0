@@ -1,0 +1,76 @@
+.website-editor > p {
+  color: var(--gray);
+  max-width: 850px;
+  line-height: 1.7;
+}
+.website-editor > label {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0;
+}
+.website-editor fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.website-editor fieldset:disabled {
+  opacity: 0.6;
+}
+.website-editor summary {
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.website-editor summary small {
+  color: var(--gray);
+  font-size: 13px;
+  font-weight: 400;
+}
+.website-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+.website-fields label {
+  display: grid;
+  gap: 10px;
+  overflow-wrap: anywhere;
+}
+.website-fields label.checkbox-field {
+  display: flex;
+}
+.website-fields textarea {
+  resize: vertical;
+}
+.website-fields .text-link {
+  margin-top: 8px;
+}
+.website-publish {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: #101112;
+  border: 1px solid #333;
+}
+.website-publish > span {
+  color: var(--gray);
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  .website-fields {
+    grid-template-columns: 1fr;
+  }
+  .website-publish {
+    position: static;
+  }
+}
+
+.admin-layout .quick-actions {
+  flex-wrap: wrap;
+}

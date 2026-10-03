@@ -47,6 +47,7 @@ export type Contact = {
   youtube_url: string;
 };
 export type Settings = {
+  website_content?: unknown;
   id: string;
   event_name: string;
   association_name: string;

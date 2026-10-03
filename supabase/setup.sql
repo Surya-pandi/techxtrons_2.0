@@ -1,32 +1,37 @@
--- INITIAL SETUP ONLY: run once in the Supabase SQL editor on a project without these tables.
--- Bundles migrations 001-005. Do not run this and the same migrations separately.
+-- Run in the Supabase SQL editor for initial setup or to repair a partial setup.
+-- Rerunnable for this project's schema: preserves rows and existing bucket settings.
+-- Refreshes app-owned policies/functions/triggers inside a single transaction.
+-- Includes migrations 001-005; do not apply those separately afterward.
+-- Existing tables must match this project's schema; this does not reconcile schema drift.
 -- After success set SITE_PREVIEW_MODE=false in .env.local.
 
 begin;
 
 -- 001_initial.sql
--- Run once in the Supabase SQL editor. No service-role key is used by this app.
+-- Rerunnable adaptation of the initial migration. No service-role key is used by this app.
 create extension if not exists pgcrypto;
-create table public.admins (id uuid primary key references auth.users(id) on delete cascade, email text unique not null, created_at timestamptz not null default now());
+create table if not exists public.admins (id uuid primary key references auth.users(id) on delete cascade, email text unique not null, created_at timestamptz not null default now());
 alter table public.admins enable row level security;
 create or replace function public.is_admin() returns boolean language sql stable security definer set search_path = '' as $$ select exists(select 1 from public.admins where id = auth.uid()); $$;
 revoke all on function public.is_admin() from public;
 grant execute on function public.is_admin() to anon, authenticated;
+drop policy if exists "Admins may read their membership" on public.admins;
 create policy "Admins may read their membership" on public.admins for select to authenticated using (id = auth.uid());
-create table public.events (
+create table if not exists public.events (
  id uuid primary key default gen_random_uuid(), title text not null, slug text unique not null check (slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'), category text not null check (category in ('technical','non_technical')),
  description text not null default '', poster_url text not null default '', event_date date, event_time time, venue text not null default '', rules text not null default '', coordinators text not null default '', prize_details text not null default '', registration_url text not null default '', is_featured boolean not null default false, created_at timestamptz not null default now(), updated_at timestamptz not null default now()
 );
-create table public.gallery (
+create table if not exists public.gallery (
  id uuid primary key default gen_random_uuid(), image_url text not null, storage_path text, caption text not null default '', category text not null default 'others' check (category in ('technical','non_technical','cultural','moments','others')), event_id uuid references public.events(id) on delete set null, is_featured boolean not null default false, created_at timestamptz not null default now()
 );
-create table public.about (id uuid primary key default '00000000-0000-0000-0000-000000000001' check (id = '00000000-0000-0000-0000-000000000001'), title text not null default '', description text not null default '', vision text not null default '', mission text not null default '', objectives text not null default '', image_url text not null default '', updated_at timestamptz not null default now());
-create table public.contact (id uuid primary key default '00000000-0000-0000-0000-000000000001' check (id = '00000000-0000-0000-0000-000000000001'), department_name text not null default '', college_name text not null default '', email text not null default '', phone text not null default '', address text not null default '', map_url text not null default '', instagram_url text not null default '', linkedin_url text not null default '', youtube_url text not null default '', updated_at timestamptz not null default now());
-create table public.settings (id uuid primary key default '00000000-0000-0000-0000-000000000001' check (id = '00000000-0000-0000-0000-000000000001'), event_name text not null default 'EVENT NAME', association_name text not null default 'DEPARTMENT ASSOCIATION', year text not null default '2026', event_starts_at timestamptz, venue text not null default 'EVENT VENUE', logo_url text not null default '/images/logo.png', intro_enabled boolean not null default true, updated_at timestamptz not null default now());
-create table public.messages (id uuid primary key default gen_random_uuid(), name text not null, email text not null, subject text not null, message text not null, created_at timestamptz not null default now());
-create table public.contact_rate_limits (fingerprint text primary key, window_start timestamptz not null, requests int not null default 1);
+create table if not exists public.about (id uuid primary key default '00000000-0000-0000-0000-000000000001' check (id = '00000000-0000-0000-0000-000000000001'), title text not null default '', description text not null default '', vision text not null default '', mission text not null default '', objectives text not null default '', image_url text not null default '', updated_at timestamptz not null default now());
+create table if not exists public.contact (id uuid primary key default '00000000-0000-0000-0000-000000000001' check (id = '00000000-0000-0000-0000-000000000001'), department_name text not null default '', college_name text not null default '', email text not null default '', phone text not null default '', address text not null default '', map_url text not null default '', instagram_url text not null default '', linkedin_url text not null default '', youtube_url text not null default '', updated_at timestamptz not null default now());
+create table if not exists public.settings (id uuid primary key default '00000000-0000-0000-0000-000000000001' check (id = '00000000-0000-0000-0000-000000000001'), event_name text not null default 'EVENT NAME', association_name text not null default 'DEPARTMENT ASSOCIATION', year text not null default '2026', event_starts_at timestamptz, venue text not null default 'EVENT VENUE', logo_url text not null default '/images/logo.png', intro_enabled boolean not null default true, updated_at timestamptz not null default now());
+create table if not exists public.messages (id uuid primary key default gen_random_uuid(), name text not null, email text not null, subject text not null, message text not null, created_at timestamptz not null default now());
+create table if not exists public.contact_rate_limits (fingerprint text primary key, window_start timestamptz not null, requests int not null default 1);
 alter table public.contact_rate_limits enable row level security;
 alter table public.messages enable row level security;
+drop policy if exists "Admin message access" on public.messages;
 create policy "Admin message access" on public.messages for select to authenticated using (public.is_admin());
 -- Public submissions go through a bounded SECURITY DEFINER RPC; direct inserts are denied.
 create or replace function public.submit_contact(p_name text, p_email text, p_subject text, p_message text) returns void language plpgsql security definer set search_path = '' as $$
@@ -45,33 +50,43 @@ create or replace function public.set_updated_at() returns trigger language plpg
 do $$ declare t text; begin
  foreach t in array array['events','gallery','about','contact','settings'] loop
  execute format('alter table public.%I enable row level security', t);
+ execute format('drop policy if exists "Public read" on public.%I', t);
  execute format('create policy "Public read" on public.%I for select to anon, authenticated using (true)', t);
+ execute format('drop policy if exists "Admin insert" on public.%I', t);
  execute format('create policy "Admin insert" on public.%I for insert to authenticated with check (public.is_admin())', t);
+ execute format('drop policy if exists "Admin update" on public.%I', t);
  execute format('create policy "Admin update" on public.%I for update to authenticated using (public.is_admin()) with check (public.is_admin())', t);
+ execute format('drop policy if exists "Admin delete" on public.%I', t);
  execute format('create policy "Admin delete" on public.%I for delete to authenticated using (public.is_admin())', t);
  end loop;
  foreach t in array array['events','about','contact','settings'] loop
+ execute format('drop trigger if exists set_updated_at on public.%I', t);
  execute format('create trigger set_updated_at before update on public.%I for each row execute function public.set_updated_at()', t);
  end loop;
 end $$;
-create index events_category_idx on public.events(category);
-create index gallery_event_idx on public.gallery(event_id);
-create index gallery_category_idx on public.gallery(category);
+create index if not exists events_category_idx on public.events(category);
+create index if not exists gallery_event_idx on public.gallery(event_id);
+create index if not exists gallery_category_idx on public.gallery(category);
 revoke all on public.admins, public.messages, public.contact_rate_limits from anon, authenticated;
 grant select on public.admins, public.messages to authenticated;
 revoke all on public.events, public.gallery, public.about, public.contact, public.settings from anon, authenticated;
 grant select on public.events, public.gallery, public.about, public.contact, public.settings to anon, authenticated;
 grant insert, update, delete on public.events, public.gallery, public.about, public.contact, public.settings to authenticated;
-insert into public.settings(id) values('00000000-0000-0000-0000-000000000001');
-insert into public.about(title,description,vision,mission,objectives,image_url) values ('ASSOCIATION TITLE','[ASSOCIATION INTRODUCTION]','[VISION]','[MISSION]','[OBJECTIVES]','/images/placeholders/department-logo.png');
-insert into public.contact(department_name,college_name,address) values ('DEPARTMENT NAME','COLLEGE NAME','EVENT VENUE');
+insert into public.settings(id) values('00000000-0000-0000-0000-000000000001') on conflict (id) do nothing;
+insert into public.about(title,description,vision,mission,objectives,image_url) values ('ASSOCIATION TITLE','[ASSOCIATION INTRODUCTION]','[VISION]','[MISSION]','[OBJECTIVES]','/images/placeholders/department-logo.png') on conflict (id) do nothing;
+insert into public.contact(department_name,college_name,address) values ('DEPARTMENT NAME','COLLEGE NAME','EVENT VENUE') on conflict (id) do nothing;
 insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types) values
  ('gallery','gallery',true,10485760,array['image/jpeg','image/png','image/webp']),
  ('event-posters','event-posters',true,10485760,array['image/jpeg','image/png','image/webp']),
- ('site-assets','site-assets',true,10485760,array['image/jpeg','image/png','image/webp']);
+ ('site-assets','site-assets',true,10485760,array['image/jpeg','image/png','image/webp'])
+on conflict (id) do nothing;
+drop policy if exists "Public site image read" on storage.objects;
 create policy "Public site image read" on storage.objects for select to anon,authenticated using (bucket_id in ('gallery','event-posters','site-assets'));
+drop policy if exists "Admin site image upload" on storage.objects;
 create policy "Admin site image upload" on storage.objects for insert to authenticated with check (bucket_id in ('gallery','event-posters','site-assets') and public.is_admin());
+drop policy if exists "Admin site image update" on storage.objects;
 create policy "Admin site image update" on storage.objects for update to authenticated using (bucket_id in ('gallery','event-posters','site-assets') and public.is_admin()) with check (bucket_id in ('gallery','event-posters','site-assets') and public.is_admin());
+drop policy if exists "Admin site image delete" on storage.objects;
 create policy "Admin site image delete" on storage.objects for delete to authenticated using (bucket_id in ('gallery','event-posters','site-assets') and public.is_admin());
 
 
@@ -113,11 +128,21 @@ where description like '%TECHXTRONS 2.0%';
 
 -- 005_event_date.sql
 -- Event date confirmed as 10 October 2026; midnight IST until a time is specified.
+-- Unlike the one-time migration, preserve an already configured start date on reruns.
 alter table public.settings alter column event_starts_at
 set default '2026-10-10T00:00:00+05:30'::timestamptz;
 update public.settings
 set event_starts_at = '2026-10-10T00:00:00+05:30'::timestamptz
-where id = '00000000-0000-0000-0000-000000000001';
+where id = '00000000-0000-0000-0000-000000000001' and event_starts_at is null;
+
+-- 006_website_content.sql
+alter table public.settings
+  add column if not exists website_content jsonb not null default '{}'::jsonb
+  check (jsonb_typeof(website_content) = 'object');
+grant delete on public.messages to authenticated;
+drop policy if exists "Admin message deletion" on public.messages;
+create policy "Admin message deletion" on public.messages
+  for delete to authenticated using (public.is_admin());
 
 NOTIFY pgrst, 'reload schema';
 commit;

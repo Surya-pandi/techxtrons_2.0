@@ -2,7 +2,13 @@
 import { useActionState } from "react";
 import { ArrowUpRight, LockKeyhole } from "lucide-react";
 import { login } from "@/app/actions/admin";
-export default function LoginForm({ configured }: { configured: boolean }) {
+export default function LoginForm({
+  configured,
+  preview,
+}: {
+  configured: boolean;
+  preview: boolean;
+}) {
   const [state, action, pending] = useActionState(login, {
     success: false,
     message: "",
@@ -17,9 +23,9 @@ export default function LoginForm({ configured }: { configured: boolean }) {
       <p>Sign in to shape the experience.</p>
       {!configured && (
         <p className="form-notice">
-          Supabase is not connected yet. Add your project URL and public key,
-          run the database migration, and create an admin account to enable
-          sign-in.
+          {preview
+            ? "Sign-in is disabled in preview mode. Turn off preview mode after completing database setup to enable administrator access."
+            : "Supabase is not connected yet. Add your project URL and public key, run the database migration, and create an admin account to enable sign-in."}
         </p>
       )}
       <form action={action}>

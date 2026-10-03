@@ -37,7 +37,7 @@ export const eventFields: Field[] = [
   },
 ];
 export const aboutFields: Field[] = [
-  { name: "title", label: "Association title", required: true },
+  { name: "title", label: "Association title" },
   { name: "description", label: "Introduction", type: "textarea" },
   { name: "vision", label: "Vision", type: "textarea" },
   { name: "mission", label: "Mission", type: "textarea" },
@@ -45,8 +45,8 @@ export const aboutFields: Field[] = [
   { name: "image_url", label: "Association image", type: "image" },
 ];
 export const contactFields: Field[] = [
-  { name: "department_name", label: "Department name", required: true },
-  { name: "college_name", label: "College name", required: true },
+  { name: "department_name", label: "Department name" },
+  { name: "college_name", label: "College name" },
   { name: "email", label: "Email", type: "email" },
   { name: "phone", label: "Phone" },
   { name: "address", label: "Address", type: "textarea" },
@@ -71,6 +71,6 @@ export const settingsFields: Field[] = [
     name: "intro_enabled",
     label: "Enable intro video",
     type: "checkbox",
-    hint: "Uses /videos/desktop-intro.mp4 or /videos/mobile-intro.mp4. Missing videos are skipped automatically.",
+    hint: "Change desktop and mobile video URLs in Website content. Missing videos are skipped automatically.",
   },
 ];

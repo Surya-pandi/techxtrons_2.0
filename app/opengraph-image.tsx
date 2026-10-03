@@ -1,9 +1,14 @@
 import { ImageResponse } from "next/og";
 import { branding } from "@/lib/branding";
-export const alt = "TECHXTRONS 3.0 — Department of Information Technology.";
+import { getSettings, getWebsiteContent } from "@/lib/data";
+export const alt = "Event preview";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export default function SocialImage() {
+export default async function SocialImage() {
+  const [settings, content] = await Promise.all([
+    getSettings(),
+    getWebsiteContent(),
+  ]);
   return new ImageResponse(
     <div
       style={{
@@ -25,7 +30,7 @@ export default function SocialImage() {
           color: "#b6b6b0",
         }}
       >
-        {branding.departmentName.toUpperCase()}
+        {settings.association_name.toUpperCase()}
       </div>
       <div
         style={{
@@ -38,10 +43,18 @@ export default function SocialImage() {
           letterSpacing: -5,
         }}
       >
-        <div style={{ display: "flex" }}>
-          TECH<span style={{ color: "#ff4b16" }}>X</span>TRONS
-        </div>
-        <span style={{ color: "#f2d600", fontSize: 72 }}>3.0</span>
+        {settings.event_name === branding.eventName ? (
+          <>
+            <div style={{ display: "flex" }}>
+              TECH<span style={{ color: "#ff4b16" }}>X</span>TRONS
+            </div>
+            <span style={{ color: "#f2d600", fontSize: 72 }}>3.0</span>
+          </>
+        ) : (
+          <div style={{ display: "flex", fontSize: 58, letterSpacing: -2 }}>
+            {settings.event_name}
+          </div>
+        )}
       </div>
       <div
         style={{
@@ -51,7 +64,7 @@ export default function SocialImage() {
           color: "#f3f3ef",
         }}
       >
-        {branding.tagline}
+        {String(content["seo.tagline"])}
       </div>
       <div
         style={{

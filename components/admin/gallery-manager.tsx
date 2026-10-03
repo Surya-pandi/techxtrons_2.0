@@ -262,6 +262,12 @@ export default function GalleryManager({
             initial={{ ...editing }}
             fields={[
               {
+                name: "image_url",
+                label: "Replace image",
+                type: "image",
+                hint: "Upload a replacement image. Use Delete to remove this gallery entry.",
+              },
+              {
                 name: "caption",
                 label: "Caption / alternative text",
                 required: true,
@@ -340,11 +346,18 @@ export default function GalleryManager({
           onCancel={() => setDeleting(null)}
           onConfirm={() =>
             startTransition(async () => {
-              const result = await deleteRecord("gallery", deleting.id);
-              setNotice(result.message);
-              setDeleting(null);
-              if (result.success) {
-                router.refresh();
+              try {
+                const result = await deleteRecord("gallery", deleting.id);
+                setNotice(result.message);
+                setDeleting(null);
+                if (result.success) {
+                  router.refresh();
+                }
+              } catch {
+                setNotice(
+                  "Unable to delete. Check your connection and try again.",
+                );
+                setDeleting(null);
               }
             })
           }

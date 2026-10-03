@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Save, Upload } from "lucide-react";
 import { saveRecord } from "@/app/actions/admin";
 import { uploadImage } from "@/lib/upload";
+import { imagePreviewSource } from "@/lib/image-source";
 export type Field = {
   name: string;
   label: string;
@@ -75,10 +76,15 @@ export default function ContentForm({
     try {
       const asset = await uploadImage(
         file,
-        table === "events" ? "event-posters" : "site-assets",
+        table === "events"
+          ? "event-posters"
+          : table === "gallery"
+            ? "gallery"
+            : "site-assets",
         setProgress,
       );
       update(field, asset.url);
+      if (table === "gallery") update("storage_path", asset.path);
     } catch (error) {
       setNotice({
         success: false,
@@ -138,9 +144,9 @@ export default function ContentForm({
               </select>
             ) : field.type === "image" ? (
               <div className="image-field">
-                {values[field.name] && (
+                {imagePreviewSource(values[field.name]) && (
                   <Image
-                    src={String(values[field.name])}
+                    src={imagePreviewSource(values[field.name])!}
                     alt={`${field.label} preview`}
                     width={200}
                     height={130}
@@ -161,6 +167,16 @@ export default function ContentForm({
                     disabled={uploading}
                   />
                 </div>
+                {values[field.name] && table !== "gallery" && (
+                  <button
+                    type="button"
+                    className="text-link"
+                    disabled={uploading || pending}
+                    onClick={() => update(field.name, "")}
+                  >
+                    Remove image
+                  </button>
+                )}
               </div>
             ) : (
               <input

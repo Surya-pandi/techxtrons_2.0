@@ -1,6 +1,7 @@
 "use server";
 import { messageSchema } from "@/lib/validation";
 import { createClient, isConfigured } from "@/lib/supabase/server";
+import { getWebsiteContent } from "@/lib/data";
 export type ContactState = { success: boolean; message: string };
 export async function sendMessage(
   _previous: ContactState,
@@ -16,6 +17,11 @@ export async function sendMessage(
         "The contact form is not connected yet. Please try again after the organizing team publishes its contact details.",
     };
   try {
+    if ((await getWebsiteContent())["contact.form.visible"] === false)
+      return {
+        success: false,
+        message: "The contact form is currently unavailable.",
+      };
     const db = await createClient();
     const data = parsed.data;
     const { error } = await db.rpc("submit_contact", {

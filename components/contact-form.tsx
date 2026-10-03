@@ -1,4 +1,6 @@
 "use client";
+import { SiteText, SiteSection } from "@/components/site-content";
+
 import { useActionState } from "react";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { sendMessage } from "@/app/actions/contact";
@@ -9,19 +11,25 @@ export default function ContactForm() {
   });
   return (
     <div className="contact-form-card">
-      <span className="section-number">DROP US A LINE</span>
-      <h2>Start a conversation.</h2>
+      <span className="section-number">
+        <SiteText name="contact-form.drop-us-a-line" />
+      </span>
+      <h2>
+        <SiteText name="contact-form.start-a-conversation" />
+      </h2>
       {state.success ? (
         <div className="success-state" role="status">
           <CheckCircle2 />
-          <h3>Thank you for reaching out.</h3>
+          <h3>
+            <SiteText name="contact-form.thank-you-for-reaching-out" />
+          </h3>
           <p>{state.message}</p>
         </div>
       ) : (
         <form action={action}>
           <div className="form-row">
             <label>
-              Your name
+              <SiteText name="contact-form.your-name" />
               <input
                 name="name"
                 required
@@ -32,7 +40,7 @@ export default function ContactForm() {
               />
             </label>
             <label>
-              Email address
+              <SiteText name="contact-form.email-address" />
               <input
                 type="email"
                 name="email"
@@ -44,7 +52,7 @@ export default function ContactForm() {
             </label>
           </div>
           <label>
-            Subject
+            <SiteText name="contact-form.subject" />
             <input
               name="subject"
               required
@@ -54,7 +62,7 @@ export default function ContactForm() {
             />
           </label>
           <label>
-            Message
+            <SiteText name="contact-form.message" />
             <textarea
               name="message"
               rows={5}
@@ -66,7 +74,7 @@ export default function ContactForm() {
           </label>
           <div className="honeypot" aria-hidden="true">
             <label>
-              Leave this blank
+              <SiteText name="contact-form.leave-this-blank" />
               <input name="website" tabIndex={-1} autoComplete="off" />
             </label>
           </div>
@@ -80,7 +88,7 @@ export default function ContactForm() {
             <ArrowUpRight size={16} />
           </button>
           <p className="form-footnote">
-            Your details are only used to respond to your enquiry.
+            <SiteText name="contact-form.your-details-are-only-used-to-respond-to-your-enquiry" />
           </p>
         </form>
       )}

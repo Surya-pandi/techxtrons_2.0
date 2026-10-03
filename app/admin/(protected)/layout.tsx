@@ -1,5 +1,6 @@
 import { requireAdmin } from "@/lib/auth";
 import AdminSidebar from "@/components/admin/sidebar";
+import "@/components/admin/website-editor.css";
 export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Association admin",

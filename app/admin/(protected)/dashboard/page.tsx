@@ -58,6 +58,18 @@ export default async function Dashboard() {
         })}
       </div>
       <div className="quick-actions">
+        <Link className="button button-outline" href="/admin/website">
+          Edit website content
+        </Link>
+        <Link className="button button-outline" href="/admin/settings">
+          Edit branding and intro
+        </Link>
+        <Link className="button button-outline" href="/admin/about">
+          Edit About
+        </Link>
+        <Link className="button button-outline" href="/admin/contact">
+          Edit contact details
+        </Link>
         <Link className="button" href="/admin/events">
           <Plus size={16} />
           Create an event
@@ -102,7 +114,12 @@ export default async function Dashboard() {
         {!gallery.length && <p>Your gallery starts with the first upload.</p>}
       </section>
       <section className="admin-panel">
-        <h2>Recent enquiries</h2>
+        <div className="panel-title">
+          <h2>Recent enquiries</h2>
+          <Link className="text-link" href="/admin/messages">
+            Manage all enquiries
+          </Link>
+        </div>
         {messages.error ? (
           <p role="alert">Enquiries could not be loaded.</p>
         ) : messages.data?.length ? (

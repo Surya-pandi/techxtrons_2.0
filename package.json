@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "test:smoke": "node scripts/smoke-test.mjs",
+    "test:admin": "tsx scripts/admin-integration.ts",
     "format": "prettier --write app components lib tests proxy.ts next.config.ts"
   },
   "dependencies": {

@@ -34,6 +34,8 @@ export default function AdminSidebar() {
           ["about", "About", FileText],
           ["contact", "Contact", Mail],
           ["settings", "Settings", Settings],
+          ["website", "Website content", FileText],
+          ["messages", "Enquiries", Mail],
         ].map(([route, label, Icon]) => {
           const Component = Icon as typeof LayoutDashboard;
           return (
